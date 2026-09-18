@@ -1,41 +1,60 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import { revealTransition, staggerStep } from "@/lib/motion";
+
 type HeroProps = {
-  identityName: string;
+  headlineLines?: string[];
   supporting: string[];
   ctaLabel: string;
   ctaHref: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
   ctaVariant?: "button" | "arrow";
-  statusLabel?: string;
 };
 
 export default function Hero({
-  identityName,
+  headlineLines,
   supporting,
   ctaLabel,
   ctaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
-  ctaVariant = "button",
-  statusLabel
+  ctaVariant = "button"
 }: HeroProps) {
-  const introText = supporting[0] ?? "";
+  const introText = supporting[1] ?? "";
+  const reduceMotion = useReducedMotion();
+
+  const item = (index: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 12 },
+          animate: { opacity: 1, y: 0 },
+          transition: { ...revealTransition, delay: index * staggerStep }
+        };
 
   return (
     <section id="home" className="hero-section" aria-labelledby="hero-headline">
       <div className="hero-inner">
-        <h1 id="hero-headline" className="hero-headline">
-          {identityName}
-        </h1>
-        <p className="hero-intro">{introText}</p>
-        {statusLabel ? (
-          <p className="hero-status">
-            <span className="hero-status-dot" aria-hidden />
-            <span>{statusLabel}</span>
-          </p>
+        <motion.h1 id="hero-headline" className="hero-headline" {...item(0)}>
+          {headlineLines?.length ? (
+            headlineLines.map((line, index) => (
+              <span key={`${index}-${line}`} className="hero-headline-line">
+                {line}
+              </span>
+            ))
+          ) : (
+            supporting[0]
+          )}
+        </motion.h1>
+        {introText ? (
+          <motion.p className="hero-intro" {...item(1)}>
+            {introText}
+          </motion.p>
         ) : null}
 
-        <div className="hero-cta-group">
+        <motion.div className="hero-cta-group" {...item(introText ? 2 : 1)}>
           <a
             className={ctaVariant === "arrow" ? "hero-cta-arrow" : "hero-cta"}
             href={ctaHref}
@@ -66,7 +85,7 @@ export default function Hero({
               {secondaryCtaLabel}
             </a>
           ) : null}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

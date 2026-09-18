@@ -1,20 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import LanguageSwitch from "@/components/LanguageSwitch";
+import { uiCopy } from "@/data/copy";
 import { contentByLocale } from "@/data/projects";
+import type { Locale } from "@/data/projects";
+import { getRoutes } from "@/lib/i18n";
 import lagomPreview from "@/images/lagom_iphone.jpg";
 import psochazkyPreview from "@/images/psochazky_nahled.png";
 import salonUPotokaPreview from "@/images/salon-u-potoka-nahled.png";
+import Reveal from "@/components/Reveal";
+import { staggerStep } from "@/lib/motion";
 
 const previewImageById = {
   "lagom-app": lagomPreview,
   psochazky: psochazkyPreview,
-  "salon-u-potoka": salonUPotokaPreview,
-  // others use placeholder styling (or explicit previewImage in data)
+  "salon-u-potoka": salonUPotokaPreview
 } as const;
 
-export default function ProductDesignProjectsPage() {
-  const content = contentByLocale.cz;
+type ProjectsOverviewPageProps = {
+  locale: Locale;
+};
+
+export default function ProjectsOverviewPage({ locale }: ProjectsOverviewPageProps) {
+  const content = contentByLocale[locale];
+  const copy = uiCopy[locale];
+  const routes = getRoutes(locale);
   const projectsOrder = ["lagom-app", "psochazky", "salon-u-potoka"];
   const sortedProjects = [...content.projects].sort((a, b) => {
     const aIndex = projectsOrder.indexOf(a.id);
@@ -27,27 +37,32 @@ export default function ProductDesignProjectsPage() {
   return (
     <main className="page">
       <LanguageSwitch
-        locale="cz"
+        locale={locale}
+        page="projects"
         showBrandTrail
-        brandTrailCurrentLabel="Projekty"
-        projectsHref="/product-design/projekty"
-        processHref="/product-design/proces"
-        aboutHref="/product-design/o-mne"
+        brandTrailCurrentLabel={copy.projectsTitle}
       />
 
       <section className="projects-overview product-design-subpage-content" aria-labelledby="projects-overview-heading">
-        <h1 id="projects-overview-heading" className="projects-overview-title">
-          Projekty
-        </h1>
+        <Reveal>
+          <h1 id="projects-overview-heading" className="projects-overview-title">
+            {copy.projectsTitle}
+          </h1>
+        </Reveal>
 
         <div className="projects-overview-grid">
-          {sortedProjects.map((project) => {
+          {sortedProjects.map((project, index) => {
             const previewImage = previewImageById[project.id as keyof typeof previewImageById];
 
             return (
-              <article key={project.id} className="projects-overview-card">
+              <Reveal
+                key={project.id}
+                as="article"
+                className="projects-overview-card"
+                delay={index * staggerStep}
+              >
                 {previewImage ? (
-                  <Link href={`/product-design/projects/${project.id}`} className="projects-overview-media-link">
+                  <Link href={routes.project(project.id)} className="projects-overview-media-link">
                     <Image
                       src={previewImage}
                       alt={project.previewAlt}
@@ -63,18 +78,18 @@ export default function ProductDesignProjectsPage() {
 
                 <div className="projects-overview-body">
                   <h2 className="projects-overview-card-title">
-                    <Link href={`/product-design/projects/${project.id}`}>{project.name}</Link>
+                    <Link href={routes.project(project.id)}>{project.name}</Link>
                   </h2>
                   <p className="project-type">{project.type}</p>
                   <p className="projects-overview-summary">{project.summary}</p>
-                  <Link href={`/product-design/projects/${project.id}`} className="project-card-cta">
-                    <span>Detail projektu</span>
+                  <Link href={routes.project(project.id)} className="project-card-cta">
+                    <span>{copy.projectDetail}</span>
                     <span className="project-card-cta-arrow" aria-hidden>
                       →
                     </span>
                   </Link>
                 </div>
-              </article>
+              </Reveal>
             );
           })}
         </div>

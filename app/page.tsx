@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import HomePageContent from "@/components/HomePageContent";
 
 export default function HomePage() {
-  redirect("/product-design");
+  return <HomePageContent locale="cz" />;
 }

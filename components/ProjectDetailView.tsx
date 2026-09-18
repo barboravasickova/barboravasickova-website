@@ -3,10 +3,14 @@ import { notFound } from "next/navigation";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import LanguageSwitch from "@/components/LanguageSwitch";
+import Reveal from "@/components/Reveal";
 import ProjectCaseNav from "@/components/ProjectCaseNav";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import ZoomableImage from "@/components/ZoomableImage";
-import { contentByLocale, getProjectByLocale } from "@/data/projects";
+import { uiCopy } from "@/data/copy";
+import { contentByLocale, getProjectByLocale, type Locale } from "@/data/projects";
+import { projectCaseCopy, type ProjectCaseCopy } from "@/data/projectCaseCopy";
+import { getRoutes } from "@/lib/i18n";
 import lagomPhoneHand from "@/images/lagom-phone-hand.jpg";
 import lagomIphone from "@/images/lagom_iphone.jpg";
 import lagomAktivita from "@/images/lagom-aktivita.jpg";
@@ -26,17 +30,18 @@ import psochazkyDesign from "@/images/psochazky-design.png";
 import psochazkyLoFi from "@/images/psochazky-lo-fi.jpg";
 import salonUPotokaPreview from "@/images/salon-u-potoka-nahled.png";
 
-type ProjectDetailPageProps = {
-  params: Promise<{ id: string }>;
+type ProjectDetailViewProps = {
+  locale: Locale;
+  id: string;
 };
 
-export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
-  const { id } = await params;
-  const project = getProjectByLocale("cz", id);
+export async function generateProjectMetadata(locale: Locale, id: string): Promise<Metadata> {
+  const project = getProjectByLocale(locale, id);
+  const copy = uiCopy[locale];
 
   if (!project) {
     return {
-      title: "Projekt nenalezen"
+      title: copy.caseNotFound
     };
   }
 
@@ -319,6 +324,71 @@ const projectConfigById: Record<(typeof projectsOrder)[number], ProjectConfig> =
   }
 };
 
+function applyCaseCopy(config: ProjectConfig, copy: ProjectCaseCopy): ProjectConfig {
+  const withImageCopy = (
+    images: ProjectSectionConfig["images"],
+    sectionCopy: { imageAlts?: string[]; imageArias?: string[]; imageCaptions?: Array<string | undefined> }
+  ) =>
+    images?.map((image, index) => ({
+      ...image,
+      alt: sectionCopy.imageAlts?.[index] ?? image.alt,
+      ariaLabel: sectionCopy.imageArias?.[index] ?? image.ariaLabel,
+      caption: sectionCopy.imageCaptions?.[index] ?? image.caption
+    }));
+
+  return {
+    ...config,
+    title: copy.title,
+    lead: copy.lead,
+    role: copy.role,
+    timeline: copy.timeline,
+    context: copy.context,
+    projectIntro: copy.projectIntro,
+    tags: copy.tags ?? config.tags,
+    introImage: {
+      ...config.introImage,
+      alt: copy.introImageAlt,
+      ariaLabel: copy.introImageAria
+    },
+    research: {
+      ...config.research,
+      paragraphs: copy.research.paragraphs,
+      list: copy.research.list ?? config.research.list,
+      afterList: copy.research.afterList ?? config.research.afterList,
+      images: withImageCopy(config.research.images, copy.research)
+    },
+    idea: {
+      ...config.idea,
+      paragraphs: copy.idea.paragraphs,
+      images: withImageCopy(config.idea.images, copy.idea)
+    },
+    design: {
+      ...config.design,
+      paragraphs: copy.design.paragraphs,
+      list: copy.design.list ?? config.design.list,
+      afterList: copy.design.afterList ?? config.design.afterList,
+      images: withImageCopy(config.design.images, copy.design)
+    },
+    reflection: {
+      ...config.reflection,
+      paragraphs: copy.reflection.paragraphs,
+      listHeading: copy.reflection.listHeading,
+      list: copy.reflection.list,
+      afterListHeading: copy.reflection.afterListHeading,
+      afterList: copy.reflection.afterList
+    },
+    cta: config.cta && copy.ctaLabel ? { ...config.cta, label: copy.ctaLabel } : config.cta,
+    ctaSecondary:
+      config.ctaSecondary && copy.ctaSecondaryLabel
+        ? { ...config.ctaSecondary, label: copy.ctaSecondaryLabel }
+        : config.ctaSecondary,
+    carouselSlides: config.carouselSlides.map((slide, index) => ({
+      ...slide,
+      alt: copy.carouselAlts[index] ?? slide.alt
+    }))
+  };
+}
+
 function renderList(items: string[]) {
   return (
     <ul className="project-info-list">
@@ -365,16 +435,19 @@ function renderSectionContent(section: ProjectSectionConfig) {
   );
 }
 
-export default async function ProductDesignProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const { id } = await params;
-  const project = getProjectByLocale("cz", id);
+export default async function ProjectDetailView({ locale, id }: ProjectDetailViewProps) {
+  const project = getProjectByLocale(locale, id);
+  const copy = uiCopy[locale];
+  const routes = getRoutes(locale);
 
   if (!project) {
     notFound();
   }
 
-  const projectConfig =
+  const baseConfig =
     projectConfigById[project.id as (typeof projectsOrder)[number]] ?? projectConfigById["salon-u-potoka"];
+  const caseCopy = projectCaseCopy[locale][project.id];
+  const projectConfig = caseCopy ? applyCaseCopy(baseConfig, caseCopy) : baseConfig;
   const breadcrumbCurrentLabel = project.id === "lagom-app" ? "Lagom App" : project.name;
   const currentProjectOrderIndex = projectsOrder.indexOf(project.id as (typeof projectsOrder)[number]);
   const nextProjectId =
@@ -382,7 +455,7 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
       ? projectsOrder[currentProjectOrderIndex + 1]
       : null;
   const nextProject = nextProjectId
-    ? contentByLocale.cz.projects.find((projectItem) => projectItem.id === nextProjectId)
+    ? contentByLocale[locale].projects.find((projectItem) => projectItem.id === nextProjectId)
     : null;
 
   const getNextProjectPreview = (projectId: string) => {
@@ -392,24 +465,22 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
     if (projectId === "salon-u-potoka") {
       return salonUPotokaPreview;
     }
-    return contentByLocale.cz.projects.find((projectItem) => projectItem.id === projectId)?.previewImage;
+    return contentByLocale[locale].projects.find((projectItem) => projectItem.id === projectId)?.previewImage;
   };
 
   return (
     <main className="page">
       <LanguageSwitch
-        locale="cz"
-        backHref="/product-design"
+        locale={locale}
+        page="project"
+        projectId={project.id}
         showBrandTrail
         brandTrailCurrentLabel={breadcrumbCurrentLabel}
-        projectsHref="/product-design/projekty"
-        processHref="/product-design/proces"
-        aboutHref="/product-design/o-mne"
         includeProjectsInTrail
       />
 
       <article className="project-case-study">
-        <section className="project-hero">
+        <Reveal as="section" className="project-hero">
           <div className="project-hero-content">
             <p className="project-eyebrow">{projectConfig.eyebrow}</p>
             <h1 className="project-title">{projectConfig.title}</h1>
@@ -423,34 +494,34 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
             <p className="project-lead">{projectConfig.lead}</p>
           </div>
 
-          <ProjectCarousel slides={projectConfig.carouselSlides} ariaLabel={`Náhledy projektu ${project.name}`} />
+          <ProjectCarousel slides={projectConfig.carouselSlides} ariaLabel={`${project.name}`} />
 
           <section className="project-info-columns" aria-label={`Shrnutí projektu ${project.name}`}>
             <div className="project-info-card">
-              <h2>ROLE</h2>
+              <h2>{copy.caseRole}</h2>
               {renderList(projectConfig.role)}
             </div>
             <div className="project-info-card">
-              <h2>NÁSTROJE</h2>
+              <h2>{copy.caseTools}</h2>
               {renderList(projectConfig.tools)}
             </div>
             <div className="project-info-card">
-              <h2>TIMELINE</h2>
+              <h2>{copy.caseTimeline}</h2>
               <p>{projectConfig.timeline}</p>
             </div>
             <div className="project-info-card">
-              <h2>KONTEXT</h2>
+              <h2>{copy.caseContext}</h2>
               <p>{projectConfig.context}</p>
             </div>
           </section>
-        </section>
+        </Reveal>
 
         <div className="project-layout">
-          <ProjectCaseNav />
+          <ProjectCaseNav locale={locale} />
 
           <div className="project-content">
             <section id="o-projektu" className="project-heading-section">
-              <h2>O projektu</h2>
+              <h2>{copy.caseAbout}</h2>
               {projectConfig.projectIntro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -474,17 +545,17 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
             </section>
 
             <section id="research" className="project-heading-section">
-              <h2>Research</h2>
+              <h2>{copy.caseResearch}</h2>
               {renderSectionContent(projectConfig.research)}
             </section>
 
             <section id="idea" className="project-heading-section">
-              <h2>Idea</h2>
+              <h2>{copy.caseIdea}</h2>
               {renderSectionContent(projectConfig.idea)}
             </section>
 
             <section id="design" className="project-heading-section">
-              <h2>Design</h2>
+              <h2>{copy.caseDesign}</h2>
               {projectConfig.design.images && projectConfig.design.images.length > 1 ? (
                 <>
                   {projectConfig.design.paragraphs.map((paragraph) => (
@@ -519,7 +590,7 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
             </section>
 
             <section id="reflexe" className="project-heading-section">
-              <h2>Reflexe</h2>
+              <h2>{copy.caseReflection}</h2>
               {renderSectionContent(projectConfig.reflection)}
             </section>
 
@@ -546,15 +617,15 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
         </div>
 
         {nextProject ? (
-          <section className="project-next-project" aria-labelledby="project-next-project-heading">
-            <p className="project-next-project-eyebrow">PROJEKTY</p>
+          <Reveal as="section" className="project-next-project" delay={0.08} aria-labelledby="project-next-project-heading">
+            <p className="project-next-project-eyebrow">{copy.caseNextEyebrow}</p>
             <h2 id="project-next-project-heading" className="project-next-project-title">
-              Další projekt
+              {copy.caseNextTitle}
             </h2>
             <Link
-              href={`/product-design/projects/${nextProject.id}`}
+              href={routes.project(nextProject.id)}
               className="project-next-project-card"
-              aria-label={`Otevřít detail projektu ${nextProject.name}`}
+              aria-label={`${copy.projectDetail}: ${nextProject.name}`}
             >
               <div className="project-next-project-content">
                 <p className="project-next-project-kicker">{nextProject.name.toUpperCase()}</p>
@@ -566,7 +637,7 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
                 </div>
                 <div className="project-next-project-divider" aria-hidden />
                 <span className="project-card-cta">
-                  <span>Detail projektu</span>
+                  <span>{copy.projectDetail}</span>
                   <span className="project-card-cta-arrow" aria-hidden>
                     →
                   </span>
@@ -583,7 +654,7 @@ export default async function ProductDesignProjectDetailPage({ params }: Project
                 />
               </div>
             </Link>
-          </section>
+          </Reveal>
         ) : null}
       </article>
     </main>

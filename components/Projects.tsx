@@ -1,5 +1,6 @@
 import type { Project } from "@/data/projects";
-import ProjectCard from "./ProjectCard";
+import HomeProjectsCarousel from "./HomeProjectsCarousel";
+import Reveal from "./Reveal";
 
 type ProjectsProps = {
   id: string;
@@ -24,16 +25,13 @@ export default function Projects({ id, projects, locale, detailLabel, detailBase
 
   return (
     <section id={id} className="projects-section">
-      <div className="projects-grid">
-        {sortedProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            detailHref={`${resolvedDetailBasePath}/projects/${project.id}`}
-            detailLabel={detailLabel}
-          />
-        ))}
-      </div>
+      <Reveal>
+        <HomeProjectsCarousel
+          projects={sortedProjects}
+          detailBasePath={resolvedDetailBasePath}
+          detailLabel={detailLabel}
+        />
+      </Reveal>
     </section>
   );
 }

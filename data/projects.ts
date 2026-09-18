@@ -36,7 +36,7 @@ export type SiteContent = {
   hero: {
     identityName: string;
     identityRole: string;
-    headlineLines: [string, string];
+    headlineLines: string[];
     supporting: string[];
     ctaLabel: string;
     ctaHref: string;
@@ -66,12 +66,16 @@ export const contentByLocale: Record<Locale, SiteContent> = {
     hero: {
       identityName: "Barbora Vašíčková",
       identityRole: "UX / Product Designer",
-      headlineLines: ["Navrhuji digitální produkty,", "které dávají smysl a dobře se používají."],
-      supporting: [
-        "Navrhuji digitální produkty, které propojují byznys cíle s potřebami uživatelů. Kombinuji analytické UX myšlení s čistým vizuálním stylem."
+      headlineLines: [
+        "Navrhuji digitální produkty, které propojují",
+        "byznys cíle s potřebami uživatelů"
       ],
-      ctaLabel: "Zobrazit projekty",
-      ctaHref: "#projekty"
+      supporting: [
+        "Navrhuji digitální produkty, které propojují byznys cíle s potřebami uživatelů",
+        "Spojuji estetické grafické cítění s promyšleným UX a pomáhám nápadům růst do funkčních digitálních produktů."
+      ],
+      ctaLabel: "Napsat zprávu",
+      ctaHref: "/kontakt"
     },
     projectsTitle: "Projekty",
     projects: [
@@ -243,97 +247,51 @@ export const contentByLocale: Record<Locale, SiteContent> = {
     hero: {
       identityName: "Barbora Vašíčková",
       identityRole: "UX / Product Designer",
-      headlineLines: ["I design digital products", "that make sense and feel natural to use."],
-      supporting: [
-        "I combine UX thinking with visual craft\nso interfaces stay clear and memorable.",
-        "I work under the name BAIA."
+      headlineLines: [
+        "I design digital products that connect",
+        "business goals with user needs"
       ],
-      ctaLabel: "View projects",
-      ctaHref: "#projects"
+      supporting: [
+        "I design digital products that connect business goals with user needs",
+        "I combine aesthetic design sensibility with thoughtful UX and help ideas grow into functional digital products."
+      ],
+      ctaLabel: "Send a message",
+      ctaHref: "/en/contact"
     },
     projectsTitle: "Projects",
     projects: [
       {
         id: "psochazky",
         name: "Psocházky",
-        type: "Branding + Web Design",
-        summary: "Dog walking brand with logo design and a website built in Cursor.",
+        type: "UX / Web Design",
+        summary:
+          "A website for a dog trainer focused on working with reactive and uncertain dogs. The goal was to create an environment that lowers stress from the first contact and also guides users towards requesting the service.",
         previewImage: "/projects/preview-psochazky.svg",
         previewAlt: "Psocházky – website preview",
-        sections: [
-          {
-            heading: "Problem",
-            content:
-              "The service needed a trustworthy and friendly brand presence that clients could understand at a glance."
-          },
-          {
-            heading: "Solution",
-            content:
-              "I created a visual identity and a clear website that explains the service, value, and booking flow."
-          },
-          {
-            heading: "Process",
-            content:
-              "From logo sketches and style exploration to a simple website implementation in Cursor, with focus on clarity."
-          },
-          {
-            heading: "Outcome",
-            content:
-              "The final result is a consistent brand and practical website that supports credibility and easy communication."
-          }
-        ]
+        sections: []
       },
       {
         id: "lagom-app",
         name: "Lagom App",
         type: "UX Case Study",
-        summary: "Mobile app for balanced lifestyle, created during the Czechitas UX course.",
+        summary:
+          "The complete design process of a mobile app for healthy movement. From in-depth user research and problem definition through wireframes to a prototype focused on sustainable habits.",
         previewImage: "/projects/preview-lagom.svg",
         previewAlt: "Lagom App – mobile UI preview",
         caseStudyPdf: {
           href: "/lagom-ux-case-study.pdf",
           label: "Open PDF case study (Lagom)"
         },
-        sections: [
-          {
-            heading: "Problem",
-            content:
-              "Many users struggle to maintain a healthy movement routine without pressure, complexity, or burnout."
-          },
-          {
-            heading: "Research",
-            content:
-              "I analyzed user needs, pain points, and motivation patterns to define practical opportunities for the product."
-          },
-          {
-            heading: "User Flow",
-            content:
-              "I designed the journey from onboarding to daily use, keeping key actions predictable and easy to complete."
-          },
-          {
-            heading: "Wireframes",
-            content:
-              "Low-fidelity screens helped validate information architecture and interaction logic before visual polishing."
-          },
-          {
-            heading: "UI Design",
-            content:
-              "The interface uses calm visual language, clear hierarchy, and reusable components for consistent experience."
-          },
-          {
-            heading: "Outcome",
-            content:
-              "The case study demonstrates UX decision-making and shows how visual design supports user goals."
-          }
-        ]
+        sections: []
       },
       {
-        id: "coming-soon",
-        name: "Coming Soon",
-        type: "New project",
-        summary: "Currently working on a new project.",
+        id: "salon-u-potoka",
+        name: "Salon U Potoka",
+        type: "Rebrand and UX optimisation",
+        summary:
+          "Modernising an outdated dog salon identity, focused on building trust, making services easy to understand, and keeping the brand’s historical roots.",
         previewImage: "/projects/preview-coming-soon.svg",
-        previewAlt: "New project – preview placeholder",
+        previewAlt: "Salon U Potoka – project preview",
         sections: []
       }
     ],

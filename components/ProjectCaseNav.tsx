@@ -1,20 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { Locale } from "@/data/projects";
+import { uiCopy } from "@/data/copy";
 
-const NAV_ITEMS = [
-  { id: "o-projektu", label: "O projektu" },
-  { id: "research", label: "Research" },
-  { id: "idea", label: "Idea" },
-  { id: "design", label: "Design" },
-  { id: "reflexe", label: "Reflexe" }
-] as const;
+const NAV_ITEM_IDS = ["o-projektu", "research", "idea", "design", "reflexe"] as const;
 
-export default function ProjectCaseNav() {
-  const [activeId, setActiveId] = useState<(typeof NAV_ITEMS)[number]["id"]>("o-projektu");
+type ProjectCaseNavProps = {
+  locale?: Locale;
+};
+
+export default function ProjectCaseNav({ locale = "cz" }: ProjectCaseNavProps) {
+  const copy = uiCopy[locale];
+  const navItems = [
+    { id: "o-projektu", label: copy.caseAbout },
+    { id: "research", label: copy.caseResearch },
+    { id: "idea", label: copy.caseIdea },
+    { id: "design", label: copy.caseDesign },
+    { id: "reflexe", label: copy.caseReflection }
+  ] as const;
+  const [activeId, setActiveId] = useState<(typeof NAV_ITEM_IDS)[number]>("o-projektu");
 
   useEffect(() => {
-    const sections = NAV_ITEMS.map((item) => document.getElementById(item.id)).filter(
+    const sections = NAV_ITEM_IDS.map((itemId) => document.getElementById(itemId)).filter(
       (section): section is HTMLElement => Boolean(section)
     );
 
@@ -34,7 +42,7 @@ export default function ProjectCaseNav() {
     const updateActiveSection = () => {
       const activationY = getActivationY();
       const sectionTops = sections.map((section) => ({
-        id: section.id as (typeof NAV_ITEMS)[number]["id"],
+        id: section.id as (typeof NAV_ITEM_IDS)[number],
         top: section.getBoundingClientRect().top + window.scrollY
       }));
 
@@ -89,8 +97,8 @@ export default function ProjectCaseNav() {
   }, []);
 
   return (
-    <aside className="project-case-nav" aria-label="Navigace case study">
-      {NAV_ITEMS.map((item) => {
+    <aside className="project-case-nav" aria-label={copy.caseNavAria}>
+      {navItems.map((item) => {
         const isActive = activeId === item.id;
 
         return (
