@@ -61,9 +61,9 @@ export const uiCopy: Record<
     ctaProjects: "Přejít na projekty",
     allProjects: "Všechny projekty",
     projectDetail: "Detail projektu",
-    aboutMeTitle: "Barbora Vašíčková — Product & UX Designer",
+    aboutMeTitle: "Barbora Vašíčková — Product, UX & Quality Assurance",
     aboutMeIntro:
-      "Pomáhám měnit složitá zadání v přehledná digitální rozhraní. Mým cílem je navrhovat produkty, ve kterých se uživatelé přirozeně orientují a které zároveň plní byznysové cíle.",
+      "Pomáhám měnit složitá zadání v přehledná a spolehlivá digitální rozhraní. Mým cílem je navrhovat a testovat produkty, ve kterých se uživatelé přirozeně orientují, fungují bez chyb a zároveň plní byznysové cíle.",
     aboutMeSubtitle: "Jaký je můj postup při navrhování produktů?",
     moreAbout: "Více o mně",
     steps: [
@@ -149,9 +149,9 @@ export const uiCopy: Record<
     ctaProjects: "Go to projects",
     allProjects: "All projects",
     projectDetail: "Project details",
-    aboutMeTitle: "Barbora Vašíčková — Product & UX Designer",
+    aboutMeTitle: "Barbora Vašíčková — Product, UX & Quality Assurance",
     aboutMeIntro:
-      "I help turn complex briefs into clear digital interfaces. My goal is to design products where users naturally find their way while meeting business goals.",
+      "I help turn complex briefs into clear and reliable digital interfaces. My goal is to design and test products where users naturally find their way, that work without errors and meet business goals.",
     aboutMeSubtitle: "How do I approach product design?",
     moreAbout: "More about me",
     steps: [
