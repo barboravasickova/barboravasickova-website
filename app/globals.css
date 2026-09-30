@@ -629,15 +629,15 @@ p {
 }
 
 .home-project-slide {
-  flex: 0 0 clamp(250px, 34vw, 320px);
-  width: clamp(250px, 34vw, 320px);
+  flex: 0 0 clamp(300px, 40vw, 480px);
+  width: clamp(300px, 40vw, 480px);
   color: inherit;
   text-decoration: none;
 }
 
 .home-project-slide-media {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
@@ -1278,8 +1278,8 @@ p {
   }
 
   .home-project-slide {
-    flex-basis: clamp(220px, 64vw, 270px);
-    width: clamp(220px, 64vw, 270px);
+    flex-basis: clamp(260px, 80vw, 340px);
+    width: clamp(260px, 80vw, 340px);
   }
 
   .home-project-slide-title {
