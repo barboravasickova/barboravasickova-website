@@ -129,7 +129,7 @@ export const uiCopy: Record<
         items: "HTML5, CSS3, JavaScript, Git/GitHub/GitHub Pages, Shoptet"
       }
     ],
-    aboutFreeTimeTitle: "Co dělám, když zrovna netestuji aplikace?",
+    aboutFreeTimeTitle: "Co dělám, když zrovna netvořím aplikace?",
     aboutFreeTimeText:
       "Ve volném čase mě potkáte na horských hřebenech se psem nebo u ilustrování. Zároveň mě baví neustále se vzdělávat v technických směrech a objevovat nové technologie.",
     aboutCollabPrompt: "Máte zájem o spolupráci?",

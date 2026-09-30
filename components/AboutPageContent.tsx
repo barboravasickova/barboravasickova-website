@@ -78,9 +78,19 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
           <Image
             src={portrait}
             alt="Barbora Vašíčková"
-            sizes="(max-width: 959px) 0px, 200px"
+            sizes="240px"
             quality={95}
           />
+          <address className="about-contact-card">
+            <a href="https://www.linkedin.com/in/barbora-vasickova/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href="https://github.com/barboravasickova" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a href="mailto:vasickovabara@gmail.com">vasickovabara@gmail.com</a>
+            <span>Brno, CZ</span>
+          </address>
         </Reveal>
       </section>
     </main>

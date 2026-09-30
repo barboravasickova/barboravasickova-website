@@ -29,6 +29,9 @@ import psochazkyUserFlow from "@/images/psochazky-user-flow.jpg";
 import psochazkyDesign from "@/images/psochazky-design.png";
 import psochazkyLoFi from "@/images/psochazky-lo-fi.jpg";
 import salonUPotokaPreview from "@/images/salon-u-potoka-nahled.png";
+import salonNahled0 from "@/images/salon-nahled-0.jpg";
+import salonNahled1 from "@/images/salon-nahled-1.jpg";
+import salonNahled2 from "@/images/salon-nahled-2.jpg";
 
 type ProjectDetailViewProps = {
   locale: Locale;
@@ -320,7 +323,11 @@ const projectConfigById: Record<(typeof projectsOrder)[number], ProjectConfig> =
     idea: { paragraphs: ["Obsah sekce připravujeme."] },
     design: { paragraphs: ["Obsah sekce připravujeme."] },
     reflection: { paragraphs: ["Obsah sekce připravujeme."] },
-    carouselSlides: [{ src: salonUPotokaPreview, alt: "Salon U Potoka - náhled webu" }]
+    carouselSlides: [
+      { src: salonNahled0, alt: "Salon U Potoka - hlavní náhled webu" },
+      { src: salonNahled1, alt: "Salon U Potoka - mobilní náhled webu" },
+      { src: salonNahled2, alt: "Salon U Potoka - detail webu" }
+    ]
   }
 };
 
@@ -416,20 +423,24 @@ function renderSectionContent(section: ProjectSectionConfig) {
       ) : null}
       {section.afterList ? <p className="project-list-followup">{section.afterList}</p> : null}
       {section.images
-        ? section.images.map((image) => (
-            <div key={`${image.alt}-${image.ariaLabel}`} className="project-section-image-block">
-              <ZoomableImage
-                src={image.src}
-                alt={image.alt}
-                className={image.className ?? "project-process-image"}
-                ariaLabel={image.ariaLabel}
-                width={image.width}
-                height={image.height}
-                enableFullSizeToggle={image.enableFullSizeToggle}
-              />
-              {image.caption ? <p className="project-image-caption">{image.caption}</p> : null}
+        ? (
+            <div className="project-section-image-grid">
+              {section.images.map((image) => (
+                <div key={`${image.alt}-${image.ariaLabel}`} className="project-section-image-block">
+                  <ZoomableImage
+                    src={image.src}
+                    alt={image.alt}
+                    className={image.className ?? "project-process-image"}
+                    ariaLabel={image.ariaLabel}
+                    width={image.width}
+                    height={image.height}
+                    enableFullSizeToggle={image.enableFullSizeToggle}
+                  />
+                  {image.caption ? <p className="project-image-caption">{image.caption}</p> : null}
+                </div>
+              ))}
             </div>
-          ))
+          )
         : null}
     </>
   );
@@ -531,8 +542,6 @@ export default async function ProjectDetailView({ locale, id }: ProjectDetailVie
                   alt={projectConfig.introImage.alt}
                 className={projectConfig.introImage.className ?? "project-process-image project-intro-image"}
                   ariaLabel={projectConfig.introImage.ariaLabel}
-                  width={1400}
-                  height={980}
                 />
                 {projectConfig.introAside ? (
                   <aside className="project-word-card" aria-label={`Význam slova ${projectConfig.introAside.title}`}>
