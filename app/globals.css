@@ -1041,6 +1041,32 @@ p {
   text-align: left;
 }
 
+.about-page-photo {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .content-section.about-page-section {
+    display: grid;
+    grid-template-columns: minmax(0, 52rem) clamp(200px, 18vw, 260px);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+    max-width: none;
+  }
+
+  .about-page-photo {
+    display: block;
+    position: sticky;
+    top: 7rem;
+  }
+
+  .about-page-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
 .about-page-block {
   margin-top: 2.4rem;
 }
