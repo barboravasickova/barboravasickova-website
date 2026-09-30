@@ -58,7 +58,8 @@ export default function HomeProjectsCarousel({
                       alt={project.previewAlt}
                       className="home-project-slide-image"
                       fill
-                      sizes="(max-width: 719px) 80vw, 480px"
+                      sizes="(max-width: 719px) 140vw, 820px"
+                      quality={95}
                     />
                   ) : (
                     <div className={previewStyleClass} aria-label={project.previewAlt} role="img" />
