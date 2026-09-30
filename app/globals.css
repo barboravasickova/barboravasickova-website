@@ -594,6 +594,18 @@ p {
   margin-inline: -0.25rem;
   padding-inline: 0.25rem;
   mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.home-projects-carousel-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.home-projects-carousel-viewport.is-dragging .home-project-slide {
+  pointer-events: none;
 }
 
 .home-projects-carousel-track {
@@ -601,8 +613,6 @@ p {
   width: max-content;
   flex-wrap: nowrap;
   gap: 2.15rem;
-  animation: home-projects-marquee 160s linear infinite;
-  animation-fill-mode: none;
   will-change: transform;
 }
 
@@ -613,31 +623,16 @@ p {
   justify-content: flex-start;
 }
 
-.home-projects-carousel-viewport:hover .home-projects-carousel-track,
-.home-projects-carousel-viewport:focus-within .home-projects-carousel-track {
-  animation-play-state: paused;
-}
-
-@keyframes home-projects-marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .home-project-slide {
-  flex: 0 0 clamp(250px, 34vw, 320px);
-  width: clamp(250px, 34vw, 320px);
+  flex: 0 0 clamp(300px, 40vw, 480px);
+  width: clamp(300px, 40vw, 480px);
   color: inherit;
   text-decoration: none;
 }
 
 .home-project-slide-media {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
@@ -1046,6 +1041,74 @@ p {
   text-align: left;
 }
 
+.about-page-photo {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .content-section.about-page-section {
+    display: grid;
+    grid-template-columns: minmax(0, 52rem) clamp(160px, 14vw, 200px);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+    max-width: none;
+  }
+
+  .about-page-photo {
+    display: block;
+    position: sticky;
+    top: 7rem;
+  }
+
+  .about-page-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.about-page-block {
+  margin-top: 2.4rem;
+}
+
+.about-page-heading {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: var(--heading-weight-emphasis);
+  color: #111111;
+}
+
+.about-skills-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-skills-list li + li {
+  margin-top: 0.5rem;
+}
+
+.about-skills-list strong {
+  font-weight: var(--heading-weight-emphasis);
+  color: #111111;
+}
+
+.about-collab {
+  margin-top: 2.4rem;
+  font-weight: 600;
+  color: #111111;
+}
+
+.about-collab-link {
+  color: #111111;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.about-collab-link:hover {
+  border-color: #111111;
+}
+
 .about-clean-link {
   display: inline-block;
   margin-top: 2rem;
@@ -1274,12 +1337,11 @@ p {
 @media (max-width: 719px) {
   .home-projects-carousel-track {
     gap: 1.35rem;
-    animation-duration: 130s;
   }
 
   .home-project-slide {
-    flex-basis: clamp(220px, 64vw, 270px);
-    width: clamp(220px, 64vw, 270px);
+    flex-basis: clamp(260px, 80vw, 340px);
+    width: clamp(260px, 80vw, 340px);
   }
 
   .home-project-slide-title {

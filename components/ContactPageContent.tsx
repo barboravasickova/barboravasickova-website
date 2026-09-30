@@ -24,13 +24,7 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
           <h1 id="about-connect-heading" className="contact-final-title">
             vasickovabara@gmail.com
           </h1>
-          <p className="contact-final-subtitle">
-            {copy.contactSubtitle}{" "}
-            <a href="https://www.baia.cz/" className="contact-final-inline-link">
-              BAIA
-            </a>
-            .
-          </p>
+          <p className="contact-final-subtitle">{copy.contactSubtitle}</p>
           <div className="contact-final-cta-wrap">
             <a href="mailto:vasickovabara@gmail.com" className="hero-cta">
               {copy.contactEmailCta}
