@@ -25,10 +25,15 @@ export const uiCopy: Record<
     footerAria: string;
     footerNavAria: string;
     aboutTitle: string;
-    aboutSubheading: string;
-    aboutItems: { title: string; text: string }[];
-    aboutClosing: string;
-    aboutBaiaLink: string;
+    aboutGreeting: string;
+    aboutIntro: string;
+    aboutSections: { title: string; text: string }[];
+    aboutSkillsTitle: string;
+    aboutSkills: { label: string; items: string }[];
+    aboutFreeTimeTitle: string;
+    aboutFreeTimeText: string;
+    aboutCollabPrompt: string;
+    aboutCollabLink: string;
     contactEyebrow: string;
     contactSubtitle: string;
     contactEmailCta: string;
@@ -100,24 +105,35 @@ export const uiCopy: Record<
     footerAria: "Patička webu",
     footerNavAria: "Navigace Product design",
     aboutTitle: "O mně",
-    aboutSubheading: "Jak o designu přemýšlím:",
-    aboutItems: [
+    aboutGreeting: "Ahoj, jsem Bára.",
+    aboutIntro:
+      "Mám přesah mezi UX/UI designem, frontendovým vývojem a manuálním testováním (QA). Baví mě propojovat vizuální stránku produktů s jejich logickou strukturou a technickou spolehlivostí. Věřím, že dobrý produkt je nejen intuitivní na pohled, ale hlavně funguje bez chyb na jakémkoliv zařízení.",
+    aboutSections: [
       {
-        title: "Navigace bez hádání",
-        text: "Rozhraní stavím tak, aby člověk přirozeně věděl, co má udělat dál. Dobrý design je pro mě ten, který uživatel nemusí luštit."
-      },
-      {
-        title: "Pořádek a souvislosti",
-        text: "Ráda hledám řád v hromadě informací. Skládám si dílky k sobě, dokud celá logika produktu nepůsobí přirozeně."
-      },
-      {
-        title: "Vizuál jako pomocník",
-        text: "Estetika je pro mě důležitá, ale beru ji hlavně jako způsob, jak věci zpřehlednit a zpříjemnit jejich používání."
+        title: "Od detailu v grafice k odhalování chyb v softwaru",
+        text: "Z práce v technické přípravě výroby a grafice jsem zvyklá na absolutní preciznost - když se přehlédne malý detail, v praxi to má velké následky. Tuhle pečlivost jsem přenesla do digitálního světa. Při práci na projektech (např. webu Psocházky nebo aplikaci Lagom) neřeším jen to, jak rozhraní vypadá, ale aktivně testuji průchody na různých zařízeních a dohlížím na to, aby kód odpovídal zadání."
       }
     ],
-    aboutClosing:
-      "Ve volném čase tvořím pod jménem BAIA, kde kreslím ilustrace a věnuji se autorské tvorbě. Je to pro mě skvělý protipól k analytickému UX - učí mě to hlídat si vizuální detail a nezapomínat na to, že design má být i radost používat.",
-    aboutBaiaLink: "Když zrovna neřeším UX, najdete mě u barev pod značkou BAIA →",
+    aboutSkillsTitle: "Dovednosti a nástroje:",
+    aboutSkills: [
+      {
+        label: "QA & Testování",
+        items: "Manuální testování (iOS, Android, Web), psaní chybových reportů, Chrome DevTools, základy JIRA"
+      },
+      {
+        label: "Design & UX",
+        items: "Figma, Procreate, Wireframing, UX výzkum, návrhové systémy"
+      },
+      {
+        label: "Tech & Dev",
+        items: "HTML5, CSS3, JavaScript, Git/GitHub/GitHub Pages, Shoptet"
+      }
+    ],
+    aboutFreeTimeTitle: "Co dělám, když zrovna netestuji aplikace?",
+    aboutFreeTimeText:
+      "Ve volném čase mě potkáte na horských hřebenech se psem nebo u ilustrování. Zároveň mě baví neustále se vzdělávat v technických směrech a objevovat nové technologie.",
+    aboutCollabPrompt: "Máte zájem o spolupráci?",
+    aboutCollabLink: "Napište mi →",
     contactEyebrow: "KONTAKT",
     contactSubtitle: "Ráda proberu možnosti spolupráce, nové projekty nebo konzultace v oblasti UX a testování digitálních produktů.",
     contactEmailCta: "Napsat e-mail",
@@ -188,24 +204,35 @@ export const uiCopy: Record<
     footerAria: "Site footer",
     footerNavAria: "Product design navigation",
     aboutTitle: "About",
-    aboutSubheading: "How I think about design:",
-    aboutItems: [
+    aboutGreeting: "Hi, I’m Bára.",
+    aboutIntro:
+      "I work across UX/UI design, front-end development, and manual testing (QA). I enjoy connecting the visual side of products with their logical structure and technical reliability. I believe a good product is not only intuitive at first glance, but above all works flawlessly on any device.",
+    aboutSections: [
       {
-        title: "Navigation without guessing",
-        text: "I build interfaces so people naturally know what to do next. Good design, for me, is the kind users don’t have to decode."
-      },
-      {
-        title: "Order and connections",
-        text: "I like finding structure in a pile of information. I keep putting the pieces together until the whole product logic feels natural."
-      },
-      {
-        title: "Visuals as a helper",
-        text: "Aesthetics matter to me, but I mainly use them to make things clearer and more pleasant to use."
+        title: "From detail in graphics to finding bugs in software",
+        text: "Working in technical production preparation and graphic design taught me absolute precision - when a small detail is overlooked, it has big consequences in practice. I’ve brought that care into the digital world. When working on projects (such as the Psocházky website or the Lagom app), I don’t only focus on how the interface looks — I actively test user flows across devices and make sure the code matches the specification."
       }
     ],
-    aboutClosing:
-      "In my free time I create as BAIA, drawing illustrations and working on personal projects. It’s a great counterpart to analytical UX — it teaches me to look after visual detail and remember that design should also be a joy to use.",
-    aboutBaiaLink: "When I’m not solving UX, you’ll find me with colour under the BAIA brand →",
+    aboutSkillsTitle: "Skills and tools:",
+    aboutSkills: [
+      {
+        label: "QA & Testing",
+        items: "Manual testing (iOS, Android, Web), bug reporting, Chrome DevTools, JIRA basics"
+      },
+      {
+        label: "Design & UX",
+        items: "Figma, Procreate, Wireframing, UX research, design systems"
+      },
+      {
+        label: "Tech & Dev",
+        items: "HTML5, CSS3, JavaScript, Git/GitHub/GitHub Pages, Shoptet"
+      }
+    ],
+    aboutFreeTimeTitle: "What do I do when I’m not testing apps?",
+    aboutFreeTimeText:
+      "In my free time you’ll find me on mountain ridges with my dog or illustrating. I also enjoy continuously learning in technical fields and discovering new technologies.",
+    aboutCollabPrompt: "Interested in working together?",
+    aboutCollabLink: "Write to me →",
     contactEyebrow: "CONTACT",
     contactSubtitle: "I’d be happy to discuss collaboration opportunities, new projects, or consultations in UX and digital product testing.",
     contactEmailCta: "Send an email",

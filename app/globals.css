@@ -1041,6 +1041,48 @@ p {
   text-align: left;
 }
 
+.about-page-block {
+  margin-top: 2.4rem;
+}
+
+.about-page-heading {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  font-weight: var(--heading-weight-emphasis);
+  color: #111111;
+}
+
+.about-skills-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-skills-list li + li {
+  margin-top: 0.5rem;
+}
+
+.about-skills-list strong {
+  font-weight: var(--heading-weight-emphasis);
+  color: #111111;
+}
+
+.about-collab {
+  margin-top: 2.4rem;
+  font-weight: 600;
+  color: #111111;
+}
+
+.about-collab-link {
+  color: #111111;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.about-collab-link:hover {
+  border-color: #111111;
+}
+
 .about-clean-link {
   display: inline-block;
   margin-top: 2rem;

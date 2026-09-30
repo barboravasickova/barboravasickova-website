@@ -18,25 +18,38 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
       <section className="content-section product-design-subpage-content" aria-labelledby="about-me-heading">
         <Reveal>
           <h1 id="about-me-heading" className="content-section-title">
-            {copy.aboutTitle}
+            {copy.aboutGreeting}
           </h1>
 
-          <h2 className="about-clean-subheading">{copy.aboutSubheading}</h2>
+          <p className="project-detail-text">{copy.aboutIntro}</p>
         </Reveal>
 
-        {copy.aboutItems.map((item, index) => (
-          <Reveal key={item.title} className="project-section" delay={index * staggerStep}>
-            <h3>{item.title}</h3>
-            <p className="project-detail-text">{item.text}</p>
+        {copy.aboutSections.map((section, index) => (
+          <Reveal key={section.title} className="about-page-block" delay={(index + 1) * staggerStep}>
+            <h2 className="about-page-heading">{section.title}</h2>
+            <p className="project-detail-text">{section.text}</p>
           </Reveal>
         ))}
 
-        <Reveal delay={0.12}>
-          <p className="project-detail-text">{copy.aboutClosing}</p>
+        <Reveal className="about-page-block" delay={(copy.aboutSections.length + 1) * staggerStep}>
+          <h2 className="about-page-heading">{copy.aboutSkillsTitle}</h2>
+          <ul className="about-skills-list">
+            {copy.aboutSkills.map((skill) => (
+              <li key={skill.label} className="project-detail-text">
+                <strong>{skill.label}:</strong> {skill.items}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-          <p className="project-detail-text">
-            <a href="https://www.baia.cz/" className="about-clean-link">
-              {copy.aboutBaiaLink}
+        <Reveal className="about-page-block" delay={(copy.aboutSections.length + 2) * staggerStep}>
+          <h2 className="about-page-heading">{copy.aboutFreeTimeTitle}</h2>
+          <p className="project-detail-text">{copy.aboutFreeTimeText}</p>
+
+          <p className="about-collab">
+            {copy.aboutCollabPrompt}{" "}
+            <a href="mailto:vasickovabara@gmail.com" className="about-collab-link">
+              {copy.aboutCollabLink}
             </a>
           </p>
         </Reveal>
