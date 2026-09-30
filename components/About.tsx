@@ -20,13 +20,7 @@ export default function About({ locale = "cz" }: AboutProps) {
           <h3 id="about-connect-heading" className="contact-final-title">
             vasickovabara@gmail.com
           </h3>
-          <p className="contact-final-subtitle">
-            {copy.homeContactSubtitle}{" "}
-            <a href="https://www.baia.cz/" className="contact-final-inline-link">
-              BAIA
-            </a>
-            .
-          </p>
+          <p className="contact-final-subtitle">{copy.homeContactSubtitle}</p>
           <div className="contact-final-cta-wrap">
             <Link href={routes.contact} className="hero-cta">
               {copy.homeContactCta}
