@@ -72,7 +72,7 @@ export const contentByLocale: Record<Locale, SiteContent> = {
       ],
       supporting: [
         "Navrhuji digitální produkty, které propojují byznys cíle s potřebami uživatelů",
-        "Spojuji estetické grafické cítění s promyšleným UX a pomáhám nápadům růst do funkčních digitálních produktů."
+        "Spojuji estetické cítění s promyšlenou logikou a důrazem na detail. Pomáhám měnit nápady ve funkční produkty, které fungují bez chyb na všech zařízeních."
       ],
       ctaLabel: "Napsat zprávu",
       ctaHref: "/kontakt"
@@ -253,7 +253,7 @@ export const contentByLocale: Record<Locale, SiteContent> = {
       ],
       supporting: [
         "I design digital products that connect business goals with user needs",
-        "I combine aesthetic design sensibility with thoughtful UX and help ideas grow into functional digital products."
+        "I combine an aesthetic sense with thoughtful logic and attention to detail. I help turn ideas into functional products that work flawlessly on every device."
       ],
       ctaLabel: "Send a message",
       ctaHref: "/en/contact"
