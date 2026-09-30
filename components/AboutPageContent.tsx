@@ -78,7 +78,7 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
           <Image
             src={portrait}
             alt="Barbora Vašíčková"
-            sizes="(max-width: 959px) 0px, 260px"
+            sizes="(max-width: 959px) 0px, 200px"
             quality={95}
           />
         </Reveal>

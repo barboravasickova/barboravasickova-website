@@ -1048,7 +1048,7 @@ p {
 @media (min-width: 960px) {
   .content-section.about-page-section {
     display: grid;
-    grid-template-columns: minmax(0, 52rem) clamp(200px, 18vw, 260px);
+    grid-template-columns: minmax(0, 52rem) clamp(160px, 14vw, 200px);
     gap: clamp(3rem, 6vw, 6rem);
     align-items: start;
     max-width: none;
