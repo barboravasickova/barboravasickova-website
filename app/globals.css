@@ -35,6 +35,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
 }
 
 .app-shell-main {
@@ -159,6 +162,10 @@ a {
   .page {
     max-width: none;
     margin: 0;
+  }
+
+  .app-shell :is(p, li, blockquote) {
+    max-width: 750px;
   }
 
   .page > :not(.top-nav) {
@@ -445,13 +452,20 @@ p {
   line-height: 1.7;
   color: #444444;
   text-align: left;
+  white-space: pre-line;
 }
 
 @media (min-width: 861px) {
+  .hero-headline {
+    font-size: clamp(3rem, 5vw, 4rem);
+  }
+
   .hero-intro {
-    max-width: none;
-    white-space: nowrap;
     font-size: clamp(0.98rem, 1.05vw, 1.12rem);
+  }
+
+  .hero-section .hero-cta-group {
+    margin-top: 1.25rem;
   }
 }
 
@@ -586,6 +600,8 @@ p {
 }
 
 .home-projects-carousel {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-top: 0.25rem;
 }
 
@@ -624,8 +640,8 @@ p {
 }
 
 .home-project-slide {
-  flex: 0 0 clamp(300px, 40vw, 480px);
-  width: clamp(300px, 40vw, 480px);
+  flex: 0 0 580px;
+  width: 580px;
   color: inherit;
   text-decoration: none;
 }
@@ -1047,7 +1063,7 @@ p {
   margin-top: 2rem;
 }
 
-.about-page-photo img {
+.about-page-portrait {
   display: block;
   width: 100%;
   height: auto;
@@ -1066,13 +1082,32 @@ p {
 }
 
 .about-contact-card a {
-  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
   max-width: 100%;
-  overflow-wrap: anywhere;
   text-decoration: underline;
   text-decoration-color: #9ca3af;
   text-underline-offset: 0.2em;
   transition: color 0.2s ease;
+}
+
+.about-contact-link-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.about-contact-icon {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.about-contact-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .about-contact-card a:hover {
@@ -1089,7 +1124,7 @@ p {
     max-width: 32rem;
   }
 
-  .about-page-photo img {
+  .about-page-portrait {
     grid-column: 2;
     grid-row: 1;
     height: 100%;
@@ -1103,6 +1138,12 @@ p {
     margin-top: 0;
     padding: 1rem;
     font-size: 0.8rem;
+  }
+
+  .about-contact-icon {
+    flex-basis: 16px;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -1144,6 +1185,8 @@ p {
 }
 
 .about-skills-list strong {
+  display: block;
+  margin-bottom: 0.2rem;
   font-weight: var(--heading-weight-emphasis);
   color: #111111;
 }
@@ -1289,7 +1332,9 @@ p {
   color: #ffffff;
 }
 
-.about-me-intro {
+.app-shell .about-me-intro {
+  width: 100%;
+  max-width: none;
   margin: 0 0 2.4rem;
   font-size: clamp(1.2rem, 2vw, 1.38rem);
   line-height: 1.65;
@@ -2310,6 +2355,11 @@ p {
   .project-intro-grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: stretch;
+  }
+
+  .project-intro-grid:not(.project-intro-grid--single) {
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.75rem;
   }
 
   .project-intro-grid--single {

@@ -67,12 +67,13 @@ export const contentByLocale: Record<Locale, SiteContent> = {
       identityName: "Barbora Vašíčková",
       identityRole: "UX / Product Designer",
       headlineLines: [
-        "Navrhuji digitální produkty, které propojují",
-        "byznys cíle s potřebami uživatelů"
+        "Navrhuji digitální produkty,",
+         "které propojují byznys cíle",
+         "s potřebami uživatelů"
       ],
       supporting: [
         "Navrhuji digitální produkty, které propojují byznys cíle s potřebami uživatelů",
-        "Spojuji estetické cítění s promyšlenou logikou a důrazem na detail. Pomáhám měnit nápady ve funkční produkty, které fungují bez chyb na všech zařízeních."
+        "Spojuji estetické cítění s promyšlenou logikou a důrazem na detail.\nPomáhám měnit nápady ve funkční produkty, které fungují bez chyb na všech zařízeních."
       ],
       ctaLabel: "Napsat zprávu",
       ctaHref: "/kontakt"
@@ -248,12 +249,13 @@ export const contentByLocale: Record<Locale, SiteContent> = {
       identityName: "Barbora Vašíčková",
       identityRole: "UX / Product Designer",
       headlineLines: [
-        "I design digital products that connect",
-        "business goals with user needs"
+        "I design digital products",
+        "that connect business goals",
+        "with user needs"
       ],
       supporting: [
         "I design digital products that connect business goals with user needs",
-        "I combine an aesthetic sense with thoughtful logic and attention to detail. I help turn ideas into functional products that work flawlessly on every device."
+        "I combine an aesthetic sense with thoughtful logic and attention to detail.\nI help turn ideas into functional products that work flawlessly on every device."
       ],
       ctaLabel: "Send a message",
       ctaHref: "/en/contact"

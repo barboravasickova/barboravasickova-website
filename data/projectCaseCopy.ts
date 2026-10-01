@@ -11,7 +11,9 @@ export type ProjectCaseCopy = {
   introImageAria: string;
   research: {
     paragraphs: string[];
+    listHeading?: string;
     list?: string[];
+    afterListHeading?: string;
     afterList?: string;
     imageAlts?: string[];
     imageArias?: string[];
@@ -163,18 +165,55 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
     "salon-u-potoka": {
       title: "Nová identita a web pro psí salon",
       lead:
-        "Modernizace zastaralé identity místního psího salonu se zaměřením na vybudování důvěry, přehlednost služeb a zachování historického odkazu značky.",
-      role: ["UX/UI Design", "Rebrand", "Struktura webu"],
-      timeline: "Připravuje se",
-      context: "Projekt je aktuálně ve fázi přípravy obsahu a vizuálních podkladů.",
-      projectIntro: ["Detail case study bude doplněn po dokončení realizace."],
+        "Kompletní redesign a modernizace webu rodinného Salonu U Potoka. Cílem bylo navrhnout čitelné rozhraní na míru, zpřehlednit navigaci, zjednodušit objednávkový proces a nahradit pomalou a nepřehlednou WordPress šablonu vlastním řešením.",
+      role: ["UX research", "UX/UI design", "Frontend development", "Manuální QA"],
+      timeline: "UX výzkum – návrh – realizace",
+      context: "Kompletní redesign webu pro rodinný Salon U Potoka.",
+      projectIntro: [
+        "V rámci projektu jsem se pustila do kompletního redesignu a modernizace webu pro rodinný Salon U Potoka. Původní web běžel na bezplatné šabloně WordPressu, která byla nepřehledná, pomalá a nebyla optimalizovaná pro mobilní zařízení.",
+        "Cílem bylo navrhnout čitelné rozhraní na míru, zpřehlednit navigaci, zjednodušit objednávkový proces a postavit web na vlastním řešení bez závislosti na složitém WordPress CMS."
+      ],
       introImageAlt: "Salon U Potoka - náhled webu",
       introImageAria: "Zvětšit náhled projektu Salon U Potoka",
-      research: { paragraphs: ["Obsah sekce připravujeme."] },
-      idea: { paragraphs: ["Obsah sekce připravujeme."] },
-      design: { paragraphs: ["Obsah sekce připravujeme."] },
-      reflection: { paragraphs: ["Obsah sekce připravujeme."] },
-      carouselAlts: ["Salon U Potoka - náhled webu"],
+      research: {
+        paragraphs: ["Před samotným návrhem jsem provedla UX audit původního webu a analýzu konkurenčních psích salonů v okolí."],
+        listHeading: "Hlavní zjištěné problémy původního webu:",
+        list: [
+          "Chybějící výzva k akci (CTA): konkurenční weby nabízely okamžité tlačítko pro objednání, zatímco na webu Salonu U Potoka chyběl jasný kontaktní bod.",
+          "Nepřehledná architektura: informace o službách, ceníku a lokalitě byly roztříštěné v hlubokých podstránkách.",
+          "Špatná responzivita: více než 70 % zákazníků přistupuje na web z mobilu, ale původní šablona se na malých displejích rozpadala."
+        ],
+        afterListHeading: "Metody výzkumu:",
+        afterList:
+          "Analýza konkurence (porovnání čtyř lokálních salonů), uživatelské dotazování stávajících klientů salonu a audit informační architektury (Card Sorting pro zjednodušení menu)."
+      },
+      idea: {
+        paragraphs: [
+          "Na základě výzkumu jsem stanovila hlavní pilíře nového webu:",
+          "Rychlá orientace do 3 sekund: návštěvník musí hned na úvodní stránce vidět lokalitu (Bílovice nad Svitavou), dostupné termíny a nabídku služeb.",
+          "Přímá cesta k rezervaci: Výrazné primární tlačítko „Chci si domluvit termín“ je umístěné přímo v úvodní Hero sekci i v klíčových částech stránek, přičemž v patce je doplněný přímý kontakt. Zákazník tak nemusí tlačítko zdlouhavě hledat.",
+          "Lehký a čistý kód: přechod ze starého WordPressu na čisté HTML/CSS/JS bez zbytečných pluginů zajistil rychlé načítání i na pomalém mobilním připojení."
+        ]
+      },
+      design: {
+        paragraphs: ["Proces návrhu probíhal od hrubých skic až po finální testování funkčnosti."],
+        list: [
+          "Wireframing & UI: vytvořila jsem drátěné modely pro mobil i desktop a navrhla jemnou vizuální identitu v teplých, přírodních tónech, které podtrhují péči o mazlíčky.",
+          "Kódování & responzivita: web jsem nakódovala s důrazem na sémantické HTML5 a moderní CSS layout (Flexbox/Grid).",
+          "Manuální a cross-browser testování: před nasazením jsem ověřila zobrazení na iOS i Android zařízeních, funkčnost formulářů, responzivitu tlačítek, validitu kódu a rychlost načítání přes Chrome DevTools."
+        ]
+      },
+      reflection: {
+        paragraphs: [
+          "Tento projekt mi ukázal, jak velký rozdíl udělají správně položené otázky na začátku výzkumu. Oproštění od univerzálních šablon umožnilo vytvořit web na míru bez balastního kódu a zátěže pluginů.",
+          "Získala jsem skvělou praxi v kompletním životním cyklu produktu — od úvodního UX researchu přes grafický návrh až po kódování, testování a odlaďování chyb před finálním spuštěním."
+        ]
+      },
+      carouselAlts: [
+        "Salon U Potoka - hlavní náhled webu",
+        "Salon U Potoka - mobilní náhled webu",
+        "Salon U Potoka - detail webu"
+      ],
       tags: ["Rebrand", "UX optimalizace", "Lokální služba"]
     }
   },
@@ -297,18 +336,55 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
     "salon-u-potoka": {
       title: "A new identity and website for a dog salon",
       lead:
-        "Modernising an outdated local dog salon identity, focused on building trust, making services easy to understand, and keeping the brand’s historical roots.",
-      role: ["UX/UI Design", "Rebrand", "Website structure"],
-      timeline: "In preparation",
-      context: "The project is currently in the content and visual assets preparation phase.",
-      projectIntro: ["The case study details will be added after the project is completed."],
+        "A complete redesign and modernisation of the family-run Salon U Potoka website. The goal was to create a clear custom interface, simplify navigation and booking, and replace the slow, confusing WordPress theme with a bespoke solution.",
+      role: ["UX research", "UX/UI design", "Frontend development", "Manual QA"],
+      timeline: "UX research – design – implementation",
+      context: "A complete website redesign for the family-run Salon U Potoka.",
+      projectIntro: [
+        "I undertook a complete redesign and modernisation of the family-run Salon U Potoka website. The original site used a free WordPress theme that was confusing, slow, and not optimised for mobile devices.",
+        "The goal was to create a clear custom interface, improve navigation, simplify the booking process, and build the site as a bespoke solution without relying on a complex WordPress CMS."
+      ],
       introImageAlt: "Salon U Potoka – website preview",
       introImageAria: "Enlarge the Salon U Potoka project preview",
-      research: { paragraphs: ["This section is being prepared."] },
-      idea: { paragraphs: ["This section is being prepared."] },
-      design: { paragraphs: ["This section is being prepared."] },
-      reflection: { paragraphs: ["This section is being prepared."] },
-      carouselAlts: ["Salon U Potoka – website preview"],
+      research: {
+        paragraphs: ["Before designing, I audited the original website and analysed competing dog grooming salons in the area."],
+        listHeading: "Key problems with the original website:",
+        list: [
+          "No clear call to action (CTA): competitors offered an immediate booking button, while Salon U Potoka had no clear contact point.",
+          "Confusing information architecture: details about services, pricing, and location were scattered across deeply nested pages.",
+          "Poor responsiveness: more than 70% of customers access the site on mobile, but the original theme broke down on small screens."
+        ],
+        afterListHeading: "Research methods:",
+        afterList:
+          "Competitor analysis (four local salons), interviews with existing salon clients, and an information architecture audit (card sorting to simplify the menu)."
+      },
+      idea: {
+        paragraphs: [
+          "Based on the research, I established three pillars for the new website:",
+          "Orientation in under three seconds: visitors should immediately see the location (Bílovice nad Svitavou), available appointments, and services on the homepage.",
+          "A direct path to booking: the prominent “Book an appointment” button appears in the hero and key sections, with direct contact details also available in the footer. Customers do not have to search for the booking button.",
+          "Lightweight, clean code: moving from WordPress to plain HTML/CSS/JS without unnecessary plugins ensured fast loading, even on a slow mobile connection."
+        ]
+      },
+      design: {
+        paragraphs: ["The design process moved from rough sketches through to final functionality testing."],
+        list: [
+          "Wireframing & UI: I created wireframes for mobile and desktop and designed a gentle visual identity in warm, natural tones that reflect care for pets.",
+          "Development & responsiveness: I coded the site with semantic HTML5 and modern CSS layouts (Flexbox/Grid).",
+          "Manual and cross-browser testing: before launch, I checked iOS and Android rendering, form functionality, responsive buttons, code validity, and loading speed with Chrome DevTools."
+        ]
+      },
+      reflection: {
+        paragraphs: [
+          "This project showed me how much difference the right questions at the start of research can make. Moving away from generic templates made it possible to create a bespoke website without bloated code or plugin overhead.",
+          "I gained valuable experience across the full product lifecycle — from initial UX research and visual design through coding, testing, and fixing issues before launch."
+        ]
+      },
+      carouselAlts: [
+        "Salon U Potoka - main website preview",
+        "Salon U Potoka - mobile website preview",
+        "Salon U Potoka - website detail"
+      ],
       tags: ["Rebrand", "UX optimisation", "Local service"]
     }
   }

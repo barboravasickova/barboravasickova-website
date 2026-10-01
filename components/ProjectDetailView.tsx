@@ -309,7 +309,7 @@ const projectConfigById: Record<(typeof projectsOrder)[number], ProjectConfig> =
     lead:
       "Modernizace zastaralé identity místního psího salonu se zaměřením na vybudování důvěry, přehlednost služeb a zachování historického odkazu značky.",
     role: ["UX/UI Design", "Rebrand", "Struktura webu"],
-    tools: ["Figma", "Adobe Illustrator", "Cursor"],
+    tools: ["Figma", "HTML5", "CSS", "JavaScript", "Chrome DevTools"],
     timeline: "Připravuje se",
     context: "Projekt je aktuálně ve fázi přípravy obsahu a vizuálních podkladů.",
     projectIntro: ["Detail case study bude doplněn po dokončení realizace."],
@@ -360,7 +360,9 @@ function applyCaseCopy(config: ProjectConfig, copy: ProjectCaseCopy): ProjectCon
     research: {
       ...config.research,
       paragraphs: copy.research.paragraphs,
+      listHeading: copy.research.listHeading ?? config.research.listHeading,
       list: copy.research.list ?? config.research.list,
+      afterListHeading: copy.research.afterListHeading ?? config.research.afterListHeading,
       afterList: copy.research.afterList ?? config.research.afterList,
       images: withImageCopy(config.research.images, copy.research)
     },

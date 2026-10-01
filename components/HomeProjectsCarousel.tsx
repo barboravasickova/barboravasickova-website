@@ -216,7 +216,7 @@ export default function HomeProjectsCarousel({
                       alt={project.previewAlt}
                       className="home-project-slide-image"
                       fill
-                      sizes="(max-width: 719px) 140vw, 820px"
+                      sizes="(max-width: 719px) 80vw, 580px"
                       quality={95}
                       draggable={false}
                     />

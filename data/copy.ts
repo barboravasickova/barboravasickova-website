@@ -26,12 +26,12 @@ export const uiCopy: Record<
     footerNavAria: string;
     aboutTitle: string;
     aboutGreeting: string;
-    aboutIntro: string;
-    aboutSections: { title: string; text: string }[];
+    aboutIntro: string[];
+    aboutSections: { title: string; text: string[] }[];
     aboutSkillsTitle: string;
     aboutSkills: { label: string; items: string }[];
     aboutFreeTimeTitle: string;
-    aboutFreeTimeText: string;
+    aboutFreeTimeText: string[];
     aboutCollabPrompt: string;
     aboutCollabLink: string;
     contactEyebrow: string;
@@ -106,32 +106,39 @@ export const uiCopy: Record<
     footerNavAria: "Navigace Product design",
     aboutTitle: "O mně",
     aboutGreeting: "Ahoj, jsem Bára.",
-    aboutIntro:
-      "Mám přesah mezi UX/UI designem, frontendovým vývojem a manuálním testováním (QA). Baví mě propojovat vizuální stránku produktů s jejich logickou strukturou a technickou spolehlivostí. Věřím, že dobrý produkt je nejen intuitivní na pohled, ale hlavně funguje bez chyb na jakémkoliv zařízení.",
+    aboutIntro: [
+      "Pracuji jako grafička a ve volném čase se věnuji UX/UI designu, frontendu a manuálnímu testování (QA). Baví mě hledat průsečík mezi vizuální stránkou produktu, jeho použitelností a tím, jak funguje po technické stránce.",
+      "Nejsem vystudovaná vývojářka ani testerka – v těchto oblastech se vzdělávám jako samouk a své znalosti si rozšiřuji také prostřednictvím kurzů Czechitas a Skillmea. Díky tomu se na digitální produkty dokážu dívat z více úhlů: jako grafička řeším detail a vizuální konzistenci, při návrhu přemýšlím nad uživatelským prostředím a při testování hledám místa, kde něco nefunguje podle očekávání."
+    ],
     aboutSections: [
       {
-        title: "Od detailu v grafice k odhalování chyb v softwaru",
-        text: "Z práce v technické přípravě výroby a grafice jsem zvyklá na absolutní preciznost - když se přehlédne malý detail, v praxi to má velké následky. Tuhle pečlivost jsem přenesla do digitálního světa. Při práci na projektech (např. webu Psocházky nebo aplikaci Lagom) neřeším jen to, jak rozhraní vypadá, ale aktivně testuji průchody na různých zařízeních a dohlížím na to, aby kód odpovídal zadání."
+        title: "Od grafiky k testování digitálních produktů",
+        text: [
+          "Z práce v technické přípravě výroby a grafice jsem zvyklá na přesnost a práci s detailem. Vím, že i zdánlivě malá chyba může mít v praxi velký dopad. Právě tuto pečlivost přenáším i do digitální tvorby.",
+          "Na vlastních projektech, jako jsou například web Psocházky nebo aplikace Lagom, se proto nezaměřuji pouze na vzhled. Zkouším uživatelské scénáře, testuji průchody na různých zařízeních a hledám chyby nebo místa, která by mohla uživatele zbytečně brzdit. Zároveň mě baví rozumět tomu, co se děje „pod kapotou“ a jak návrh souvisí s výslednou implementací."
+        ]
       }
     ],
-    aboutSkillsTitle: "Dovednosti a nástroje:",
+    aboutSkillsTitle: "Dovednosti a nástroje",
     aboutSkills: [
       {
-        label: "QA & Testování",
-        items: "Manuální testování (iOS, Android, Web), psaní chybových reportů, Chrome DevTools, základy JIRA"
+        label: "QA & testování",
+        items: "Manuální testování webů a mobilních aplikací · iOS · Android · psaní bug reportů · Chrome DevTools · základy JIRA"
       },
       {
-        label: "Design & UX",
-        items: "Figma, Procreate, Wireframing, UX výzkum, návrhové systémy"
+        label: "UX/UI & grafika",
+        items: "Figma · wireframing · UX výzkum · návrhové systémy · Procreate · grafický design"
       },
       {
-        label: "Tech & Dev",
-        items: "HTML5, CSS3, JavaScript, Git/GitHub/GitHub Pages, Shoptet"
+        label: "Frontend & technologie",
+        items: "HTML5 · CSS3 · JavaScript · Git · GitHub · GitHub Pages · Shoptet"
       }
     ],
-    aboutFreeTimeTitle: "Co dělám, když zrovna netvořím aplikace?",
-    aboutFreeTimeText:
-      "Ve volném čase mě potkáte na horských hřebenech se psem nebo u ilustrování. Zároveň mě baví neustále se vzdělávat v technických směrech a objevovat nové technologie.",
+    aboutFreeTimeTitle: "Co dělám, když zrovna netvořím?",
+    aboutFreeTimeText: [
+      "Nejčastěji mě najdete na horách se psem nebo u ilustrace. A když zrovna nedělám ani jedno, pravděpodobně objevuji něco nového z oblasti technologií, designu nebo vývoje.",
+      "Baví mě učit se nové věci, propojovat zdánlivě odlišné oblasti a postupně rozšiřovat své zkušenosti od vizuální tvorby směrem k digitálním produktům."
+    ],
     aboutCollabPrompt: "Máte zájem o spolupráci?",
     aboutCollabLink: "Napište mi →",
     contactEyebrow: "KONTAKT",
@@ -205,12 +212,15 @@ export const uiCopy: Record<
     footerNavAria: "Product design navigation",
     aboutTitle: "About",
     aboutGreeting: "Hi, I’m Bára.",
-    aboutIntro:
-      "I work across UX/UI design, front-end development, and manual testing (QA). I enjoy connecting the visual side of products with their logical structure and technical reliability. I believe a good product is not only intuitive at first glance, but above all works flawlessly on any device.",
+    aboutIntro: [
+      "I work across UX/UI design, front-end development, and manual testing (QA). I enjoy connecting the visual side of products with their logical structure and technical reliability. I believe a good product is not only intuitive at first glance, but above all works flawlessly on any device."
+    ],
     aboutSections: [
       {
         title: "From detail in graphics to finding bugs in software",
-        text: "Working in technical production preparation and graphic design taught me absolute precision - when a small detail is overlooked, it has big consequences in practice. I’ve brought that care into the digital world. When working on projects (such as the Psocházky website or the Lagom app), I don’t only focus on how the interface looks — I actively test user flows across devices and make sure the code matches the specification."
+        text: [
+          "Working in technical production preparation and graphic design taught me absolute precision - when a small detail is overlooked, it has big consequences in practice. I’ve brought that care into the digital world. When working on projects (such as the Psocházky website or the Lagom app), I don’t only focus on how the interface looks — I actively test user flows across devices and make sure the code matches the specification."
+        ]
       }
     ],
     aboutSkillsTitle: "Skills and tools:",
@@ -229,8 +239,9 @@ export const uiCopy: Record<
       }
     ],
     aboutFreeTimeTitle: "What do I do when I’m not testing apps?",
-    aboutFreeTimeText:
-      "In my free time you’ll find me on mountain ridges with my dog or illustrating. I also enjoy continuously learning in technical fields and discovering new technologies.",
+    aboutFreeTimeText: [
+      "In my free time you’ll find me on mountain ridges with my dog or illustrating. I also enjoy continuously learning in technical fields and discovering new technologies."
+    ],
     aboutCollabPrompt: "Interested in working together?",
     aboutCollabLink: "Write to me →",
     contactEyebrow: "CONTACT",
