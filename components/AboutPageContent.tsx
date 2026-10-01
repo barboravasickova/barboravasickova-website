@@ -18,45 +18,36 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
   const copy = uiCopy[locale];
 
   return (
-    <main className="page page-footer-flush">
+    <main className="page page-footer-flush page-about">
       <LanguageSwitch locale={locale} page="about" showBrandTrail brandTrailCurrentLabel={copy.aboutTitle} />
 
       <section
         className="content-section product-design-subpage-content about-page-section"
         aria-labelledby="about-me-heading"
       >
-        <div className="about-page-text">
-          <Reveal>
-            <h1 id="about-me-heading" className="content-section-title">
-              {copy.aboutGreeting}
-            </h1>
+        <Reveal className="about-page-text">
+          <h1 id="about-me-heading" className="content-section-title">
+            {copy.aboutGreeting}
+          </h1>
 
-            {copy.aboutIntro.map((paragraph, index) => (
-              <p key={`about-intro-${index}`} className="project-detail-text">
-                {paragraph}
-              </p>
-            ))}
-          </Reveal>
+          {copy.aboutIntro.map((paragraph, index) => (
+            <p key={`about-intro-${index}`} className="project-detail-text">
+              {paragraph}
+            </p>
+          ))}
 
           {copy.aboutSections.map((section, index) => (
-            <Reveal
-              key={section.title}
-              className="about-page-block"
-              delay={(index + 1) * staggerStep}
-            >
+            <div key={section.title} className="about-page-block">
               <h2 className="about-page-heading">{section.title}</h2>
               {section.text.map((paragraph, paragraphIndex) => (
                 <p key={`${section.title}-${paragraphIndex}`} className="project-detail-text">
                   {paragraph}
                 </p>
               ))}
-            </Reveal>
+            </div>
           ))}
 
-          <Reveal
-            className="about-page-block"
-            delay={(copy.aboutSections.length + 1) * staggerStep}
-          >
+          <div className="about-page-block">
             <h2 className="about-page-heading">{copy.aboutSkillsTitle}</h2>
             <ul className="about-skills-list">
               {copy.aboutSkills.map((skill) => (
@@ -66,12 +57,9 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </div>
 
-          <Reveal
-            className="about-page-block"
-            delay={(copy.aboutSections.length + 2) * staggerStep}
-          >
+          <div className="about-page-block">
             <h2 className="about-page-heading">{copy.aboutFreeTimeTitle}</h2>
             {copy.aboutFreeTimeText.map((paragraph, index) => (
               <p key={`about-free-time-${index}`} className="project-detail-text">
@@ -88,8 +76,8 @@ export default function AboutPageContent({ locale }: AboutPageContentProps) {
                 {copy.aboutCollabLink}
               </a>
             </p>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
 
         <Reveal className="about-page-photo" delay={staggerStep}>
           <Image

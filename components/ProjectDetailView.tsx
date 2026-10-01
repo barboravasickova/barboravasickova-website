@@ -323,6 +323,7 @@ const projectConfigById: Record<(typeof projectsOrder)[number], ProjectConfig> =
     idea: { paragraphs: ["Obsah sekce připravujeme."] },
     design: { paragraphs: ["Obsah sekce připravujeme."] },
     reflection: { paragraphs: ["Obsah sekce připravujeme."] },
+    cta: { label: "Zobrazit web Salonu U Potoka v novém okně", href: "https://psisalonupotoka.cz/" },
     carouselSlides: [
       { src: salonNahled0, alt: "Salon U Potoka - hlavní náhled webu" },
       { src: salonNahled1, alt: "Salon U Potoka - mobilní náhled webu" },
@@ -466,12 +467,17 @@ export default async function ProjectDetailView({ locale, id }: ProjectDetailVie
   const nextProjectId =
     currentProjectOrderIndex !== -1 && currentProjectOrderIndex < projectsOrder.length - 1
       ? projectsOrder[currentProjectOrderIndex + 1]
+      : project.id === "salon-u-potoka"
+        ? projectsOrder[0]
       : null;
   const nextProject = nextProjectId
     ? contentByLocale[locale].projects.find((projectItem) => projectItem.id === nextProjectId)
     : null;
 
   const getNextProjectPreview = (projectId: string) => {
+    if (projectId === "lagom-app") {
+      return lagomIphone;
+    }
     if (projectId === "psochazky") {
       return psochazkyPreview;
     }
@@ -629,7 +635,6 @@ export default async function ProjectDetailView({ locale, id }: ProjectDetailVie
 
         {nextProject ? (
           <Reveal as="section" className="project-next-project" delay={0.08} aria-labelledby="project-next-project-heading">
-            <p className="project-next-project-eyebrow">{copy.caseNextEyebrow}</p>
             <h2 id="project-next-project-heading" className="project-next-project-title">
               {copy.caseNextTitle}
             </h2>

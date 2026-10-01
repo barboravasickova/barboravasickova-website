@@ -19,8 +19,10 @@ export default function AboutMeSection({ locale = "cz" }: AboutMeSectionProps) {
         <h2 id="about-me-heading" className="about-me-title">
           {copy.aboutMeTitle}
         </h2>
-        <p className="about-me-intro">{copy.aboutMeIntro}</p>
-        <p className="about-me-subtitle">{copy.aboutMeSubtitle}</p>
+        <p className="about-me-role">{copy.aboutMeRole}</p>
+        <p className="about-me-intro">
+          {copy.aboutMeIntro} {copy.aboutMeSubtitle}
+        </p>
       </Reveal>
 
       <div className="about-me-grid">
@@ -36,6 +38,7 @@ export default function AboutMeSection({ locale = "cz" }: AboutMeSectionProps) {
       </div>
       <Reveal delay={0.12}>
         <div className="about-me-cta-wrap">
+          <p className="about-me-cta-text">{copy.aboutMeCtaText}</p>
           <Link href={routes.about} className="hero-cta">
             {copy.moreAbout}
           </Link>

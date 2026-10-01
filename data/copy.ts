@@ -14,11 +14,13 @@ export const uiCopy: Record<
     allProjects: string;
     projectDetail: string;
     aboutMeTitle: string;
+    aboutMeRole: string;
     aboutMeIntro: string;
     aboutMeSubtitle: string;
+    aboutMeCtaText: string;
     moreAbout: string;
     steps: { number: string; title: string; description: string }[];
-    homeContactEyebrow: string;
+    homeContactTitle: string;
     homeContactSubtitle: string;
     heroContactCta: string;
     homeContactCta: string;
@@ -34,9 +36,20 @@ export const uiCopy: Record<
     aboutFreeTimeText: string[];
     aboutCollabPrompt: string;
     aboutCollabLink: string;
-    contactEyebrow: string;
+    contactTitle: string;
     contactSubtitle: string;
-    contactEmailCta: string;
+    contactFormNameLabel: string;
+    contactFormSurnameLabel: string;
+    contactFormEmailLabel: string;
+    contactFormMessageLabel: string;
+    contactFormMessagePlaceholder: string;
+    contactFormSubmit: string;
+    contactFormStatus: string;
+    contactEmailSubject: string;
+    contactDetailsTitle: string;
+    contactEmailLabel: string;
+    contactLocationLabel: string;
+    contactLocation: string;
     projectsTitle: string;
     processTitle: string;
     caseRole: string;
@@ -48,7 +61,6 @@ export const uiCopy: Record<
     caseIdea: string;
     caseDesign: string;
     caseReflection: string;
-    caseNextEyebrow: string;
     caseNextTitle: string;
     caseNotFound: string;
     caseNavAria: string;
@@ -66,10 +78,12 @@ export const uiCopy: Record<
     ctaProjects: "Přejít na projekty",
     allProjects: "Všechny projekty",
     projectDetail: "Detail projektu",
-    aboutMeTitle: "Barbora Vašíčková — Product, UX & Quality Assurance",
+    aboutMeTitle: "Barbora Vašíčková",
+    aboutMeRole: "Product designerka se zaměřením na UX/UI a přesahem do QA",
     aboutMeIntro:
-      "Pomáhám měnit složitá zadání v přehledná a spolehlivá digitální rozhraní. Mým cílem je navrhovat a testovat produkty, ve kterých se uživatelé přirozeně orientují, fungují bez chyb a zároveň plní byznysové cíle.",
+      "Navrhuji a tvořím digitální produkty s důrazem na přehledné rozhraní, použitelnost a funkčnost. Baví mě propojovat design s frontendem a testováním, aby výsledný web nebo aplikace nejen dobře vypadaly, ale také správně fungovaly.",
     aboutMeSubtitle: "Jaký je můj postup při navrhování produktů?",
+    aboutMeCtaText: "Chcete zjistit více o mých zkušenostech, dovednostech a přístupu k práci?",
     moreAbout: "Více o mně",
     steps: [
       {
@@ -97,11 +111,11 @@ export const uiCopy: Record<
           "První návrh je jen začátek. Sleduji, jak lidé s produktem reálně pracují, a podle toho odstraňuji poslední bariéry. Design pro mě končí až ve chvíli, kdy všechno hladce funguje."
       }
     ],
-    homeContactEyebrow: "KONTAKT",
-    homeContactSubtitle:
-      "Ráda proberu možnosti spolupráce, nové projekty nebo konzultace v oblasti UX a testování digitálních produktů.",
+    homeContactTitle:
+      "Máte nápad na nový projekt\nnebo potřebujete konzultaci v oblasti UX/QA?",
+    homeContactSubtitle: "Napište mi a probereme možnosti spolupráce.",
     heroContactCta: "Napsat zprávu",
-    homeContactCta: "Propojme se",
+    homeContactCta: "Kontakt",
     footerAria: "Patička webu",
     footerNavAria: "Navigace Product design",
     aboutTitle: "O mně",
@@ -141,9 +155,20 @@ export const uiCopy: Record<
     ],
     aboutCollabPrompt: "Máte zájem o spolupráci?",
     aboutCollabLink: "Napište mi →",
-    contactEyebrow: "KONTAKT",
-    contactSubtitle: "Ráda proberu možnosti spolupráce, nové projekty nebo konzultace v oblasti UX a testování digitálních produktů.",
-    contactEmailCta: "Napsat e-mail",
+    contactTitle: "S čím vám mohu pomoci?",
+    contactSubtitle: "Popište mi svůj projekt a najdeme spolu řešení.",
+    contactFormNameLabel: "Jméno",
+    contactFormSurnameLabel: "Příjmení",
+    contactFormEmailLabel: "E-mail",
+    contactFormMessageLabel: "Vaše představa:",
+    contactFormMessagePlaceholder: "Popište svůj projekt, nápad nebo otázku…",
+    contactFormSubmit: "Odeslat zprávu",
+    contactFormStatus: "Pokračujte odesláním připravené zprávy ve svém e-mailovém programu.",
+    contactEmailSubject: "Zpráva z webu",
+    contactDetailsTitle: "KONTAKT",
+    contactEmailLabel: "E-mail",
+    contactLocationLabel: "Lokalita",
+    contactLocation: "Brno, CZ",
     projectsTitle: "Projekty",
     processTitle: "O mně",
     caseRole: "ROLE",
@@ -155,7 +180,6 @@ export const uiCopy: Record<
     caseIdea: "Idea",
     caseDesign: "Design",
     caseReflection: "Reflexe",
-    caseNextEyebrow: "PROJEKTY",
     caseNextTitle: "Další projekt",
     caseNotFound: "Projekt nenalezen",
     caseNavAria: "Navigace case study",
@@ -172,10 +196,12 @@ export const uiCopy: Record<
     ctaProjects: "Go to projects",
     allProjects: "All projects",
     projectDetail: "Project details",
-    aboutMeTitle: "Barbora Vašíčková — Product, UX & Quality Assurance",
+    aboutMeTitle: "Barbora Vašíčková",
+    aboutMeRole: "Product designer focused on UX/UI with a focus on QA",
     aboutMeIntro:
-      "I help turn complex briefs into clear and reliable digital interfaces. My goal is to design and test products where users naturally find their way, that work without errors and meet business goals.",
+      "I design and build digital products with a focus on clear interfaces, usability, and functionality. I enjoy connecting design with frontend development and testing so the finished website or app not only looks good, but also works as it should.",
     aboutMeSubtitle: "How do I approach product design?",
+    aboutMeCtaText: "Would you like to learn more about my experience, skills, and approach to work?",
     moreAbout: "More about me",
     steps: [
       {
@@ -203,11 +229,11 @@ export const uiCopy: Record<
           "The first design is only the beginning. I watch how people actually use the product and remove the last barriers. For me, design is finished only when everything works smoothly."
       }
     ],
-    homeContactEyebrow: "CONTACT",
-    homeContactSubtitle:
-      "I’d be happy to discuss collaboration opportunities, new projects, or consultations in UX and digital product testing.",
+    homeContactTitle:
+      "Do you have an idea for a new project\nor need a consultation in UX/QA?",
+    homeContactSubtitle: "Write to me and we can discuss the possibilities for working together.",
     heroContactCta: "Send a message",
-    homeContactCta: "Let's connect",
+    homeContactCta: "Contact",
     footerAria: "Site footer",
     footerNavAria: "Product design navigation",
     aboutTitle: "About",
@@ -244,9 +270,20 @@ export const uiCopy: Record<
     ],
     aboutCollabPrompt: "Interested in working together?",
     aboutCollabLink: "Write to me →",
-    contactEyebrow: "CONTACT",
-    contactSubtitle: "I’d be happy to discuss collaboration opportunities, new projects, or consultations in UX and digital product testing.",
-    contactEmailCta: "Send an email",
+    contactTitle: "How can I help you?",
+    contactSubtitle: "Tell me about your project and we’ll find a solution together.",
+    contactFormNameLabel: "Name",
+    contactFormSurnameLabel: "Surname",
+    contactFormEmailLabel: "Email",
+    contactFormMessageLabel: "Your idea:",
+    contactFormMessagePlaceholder: "Describe your project, idea, or question…",
+    contactFormSubmit: "Send message",
+    contactFormStatus: "Continue by sending the prepared message in your email app.",
+    contactEmailSubject: "Website contact message",
+    contactDetailsTitle: "CONTACT",
+    contactEmailLabel: "Email",
+    contactLocationLabel: "Location",
+    contactLocation: "Brno, CZ",
     projectsTitle: "Projects",
     processTitle: "About",
     caseRole: "ROLE",
@@ -258,7 +295,6 @@ export const uiCopy: Record<
     caseIdea: "Idea",
     caseDesign: "Design",
     caseReflection: "Reflection",
-    caseNextEyebrow: "PROJECTS",
     caseNextTitle: "Next project",
     caseNotFound: "Project not found",
     caseNavAria: "Case study navigation",

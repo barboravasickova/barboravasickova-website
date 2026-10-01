@@ -209,6 +209,7 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
           "Získala jsem skvělou praxi v kompletním životním cyklu produktu — od úvodního UX researchu přes grafický návrh až po kódování, testování a odlaďování chyb před finálním spuštěním."
         ]
       },
+      ctaLabel: "Zobrazit web Salonu U Potoka v novém okně",
       carouselAlts: [
         "Salon U Potoka - hlavní náhled webu",
         "Salon U Potoka - mobilní náhled webu",
@@ -380,6 +381,7 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
           "I gained valuable experience across the full product lifecycle — from initial UX research and visual design through coding, testing, and fixing issues before launch."
         ]
       },
+      ctaLabel: "View the Salon U Potoka website in a new window",
       carouselAlts: [
         "Salon U Potoka - main website preview",
         "Salon U Potoka - mobile website preview",

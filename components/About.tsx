@@ -16,10 +16,9 @@ export default function About({ locale = "cz" }: AboutProps) {
     <Reveal as="section" id="contact" className="contact-section" delay={0.05}>
       <div className="contact-section-inner">
         <div className="contact-section-content" aria-labelledby="about-connect-heading">
-          <p className="contact-final-eyebrow">{copy.homeContactEyebrow}</p>
-          <h3 id="about-connect-heading" className="contact-final-title">
-            vasickovabara@gmail.com
-          </h3>
+          <h2 id="about-connect-heading" className="contact-final-title">
+            {copy.homeContactTitle}
+          </h2>
           <p className="contact-final-subtitle">{copy.homeContactSubtitle}</p>
           <div className="contact-final-cta-wrap">
             <Link href={routes.contact} className="hero-cta">
