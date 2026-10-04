@@ -43,6 +43,12 @@ export default function ContactForm({
     const fullName = `${firstName} ${surname}`.trim();
     formData.append("_subject", `${subjectPrefix}: ${fullName}`);
     formData.append("_replyto", senderEmail);
+    const payload: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      if (typeof value === "string") {
+        payload[key] = value;
+      }
+    });
 
     setIsSubmitting(true);
     setStatus("");
@@ -50,8 +56,11 @@ export default function ContactForm({
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
         method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" }
+        body: JSON.stringify(payload),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
       });
       const result: unknown = await response.json();
       const succeeded =
@@ -61,7 +70,14 @@ export default function ContactForm({
         (result.success === true || result.success === "true");
 
       if (!response.ok || !succeeded) {
-        throw new Error("FormSubmit rejected the submission.");
+        const responseMessage =
+          typeof result === "object" &&
+          result !== null &&
+          "message" in result &&
+          typeof result.message === "string"
+            ? result.message
+            : "FormSubmit rejected the submission.";
+        throw new Error(responseMessage);
       }
 
       form.reset();
