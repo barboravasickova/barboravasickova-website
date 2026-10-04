@@ -35,7 +35,9 @@ export default function ContactPageContent({ locale }: ContactPageContentProps) 
               messageLabel={copy.contactFormMessageLabel}
               messagePlaceholder={copy.contactFormMessagePlaceholder}
               submitLabel={copy.contactFormSubmit}
+              submittingMessage={copy.contactFormSubmitting}
               statusMessage={copy.contactFormStatus}
+              errorMessage={copy.contactFormError}
             />
           </div>
 

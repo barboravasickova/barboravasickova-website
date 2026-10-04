@@ -15,6 +15,7 @@ export type ProjectCaseCopy = {
     list?: string[];
     afterListHeading?: string;
     afterList?: string;
+    afterListItems?: string[];
     imageAlts?: string[];
     imageArias?: string[];
     imageCaptions?: Array<string | undefined>;
@@ -167,7 +168,7 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
       lead:
         "Kompletní redesign a modernizace webu rodinného Salonu U Potoka. Cílem bylo navrhnout čitelné rozhraní na míru, zpřehlednit navigaci, zjednodušit objednávkový proces a nahradit pomalou a nepřehlednou WordPress šablonu vlastním řešením.",
       role: ["UX research", "UX/UI design", "Frontend development", "Manuální QA"],
-      timeline: "UX výzkum – návrh – realizace",
+      timeline: "Září 2026",
       context: "Kompletní redesign webu pro rodinný Salon U Potoka.",
       projectIntro: [
         "V rámci projektu jsem se pustila do kompletního redesignu a modernizace webu pro rodinný Salon U Potoka. Původní web běžel na bezplatné šabloně WordPressu, která byla nepřehledná, pomalá a nebyla optimalizovaná pro mobilní zařízení.",
@@ -179,13 +180,16 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
         paragraphs: ["Před samotným návrhem jsem provedla UX audit původního webu a analýzu konkurenčních psích salonů v okolí."],
         listHeading: "Hlavní zjištěné problémy původního webu:",
         list: [
-          "Chybějící výzva k akci (CTA): konkurenční weby nabízely okamžité tlačítko pro objednání, zatímco na webu Salonu U Potoka chyběl jasný kontaktní bod.",
-          "Nepřehledná architektura: informace o službách, ceníku a lokalitě byly roztříštěné v hlubokých podstránkách.",
-          "Špatná responzivita: více než 70 % zákazníků přistupuje na web z mobilu, ale původní šablona se na malých displejích rozpadala."
+          "Konkurenční weby nabízely okamžité tlačítko pro objednání, zatímco na webu Salonu U Potoka chyběla jasná výzva k akci (CTA).",
+          "Informace o službách a lokalitě byly roztříštěné.",
+          "Více než 70 % zákazníků přistupuje na web z mobilu, ale původní šablona se na malých displejích rozpadala."
         ],
-        afterListHeading: "Metody výzkumu:",
-        afterList:
-          "Analýza konkurence (porovnání čtyř lokálních salonů), uživatelské dotazování stávajících klientů salonu a audit informační architektury (Card Sorting pro zjednodušení menu)."
+        afterListHeading: "Postup mého výzkumu:",
+        afterListItems: [
+          "Analýza konkurenčních webů (porovnání třech českých a třech zahraničních salonů)",
+          "Uživatelské dotazování stávajících klientů salonu",
+          "Audit informační architektury"
+        ]
       },
       idea: {
         paragraphs: [
@@ -198,9 +202,9 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
       design: {
         paragraphs: ["Proces návrhu probíhal od hrubých skic až po finální testování funkčnosti."],
         list: [
-          "Wireframing & UI: vytvořila jsem drátěné modely pro mobil i desktop a navrhla jemnou vizuální identitu v teplých, přírodních tónech, které podtrhují péči o mazlíčky.",
-          "Kódování & responzivita: web jsem nakódovala s důrazem na sémantické HTML5 a moderní CSS layout (Flexbox/Grid).",
-          "Manuální a cross-browser testování: před nasazením jsem ověřila zobrazení na iOS i Android zařízeních, funkčnost formulářů, responzivitu tlačítek, validitu kódu a rychlost načítání přes Chrome DevTools."
+          "Vytvořila jsem lo-fi wireframy pro mobil i desktop a navrhla jemnou vizuální identitu v teplých, přírodních tónech, které podtrhují péči o mazlíčky.",
+          "Web jsem nakódovala s důrazem na sémantické HTML5 a moderní CSS layout (Flexbox/Grid) s pomocí moderních AI nástrojů (Cursor, GitHub Copilot).",
+          "Před nasazením jsem ověřila zobrazení na iOS i Android zařízeních, responzivitu tlačítek, validitu kódu a rychlost načítání přes Chrome DevTools."
         ]
       },
       reflection: {
@@ -339,7 +343,7 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
       lead:
         "A complete redesign and modernisation of the family-run Salon U Potoka website. The goal was to create a clear custom interface, simplify navigation and booking, and replace the slow, confusing WordPress theme with a bespoke solution.",
       role: ["UX research", "UX/UI design", "Frontend development", "Manual QA"],
-      timeline: "UX research – design – implementation",
+      timeline: "September 2026",
       context: "A complete website redesign for the family-run Salon U Potoka.",
       projectIntro: [
         "I undertook a complete redesign and modernisation of the family-run Salon U Potoka website. The original site used a free WordPress theme that was confusing, slow, and not optimised for mobile devices.",
@@ -351,13 +355,16 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
         paragraphs: ["Before designing, I audited the original website and analysed competing dog grooming salons in the area."],
         listHeading: "Key problems with the original website:",
         list: [
-          "No clear call to action (CTA): competitors offered an immediate booking button, while Salon U Potoka had no clear contact point.",
-          "Confusing information architecture: details about services, pricing, and location were scattered across deeply nested pages.",
-          "Poor responsiveness: more than 70% of customers access the site on mobile, but the original theme broke down on small screens."
+          "Competitors offered an immediate booking button, while Salon U Potoka had no clear call to action (CTA).",
+          "Information about services and location was scattered.",
+          "More than 70% of customers access the site on mobile, but the original theme broke down on small screens."
         ],
-        afterListHeading: "Research methods:",
-        afterList:
-          "Competitor analysis (four local salons), interviews with existing salon clients, and an information architecture audit (card sorting to simplify the menu)."
+        afterListHeading: "My research process:",
+        afterListItems: [
+          "Competitor website analysis (three Czech and three international salons)",
+          "Interviews with existing salon clients",
+          "Information architecture audit"
+        ]
       },
       idea: {
         paragraphs: [
@@ -370,9 +377,9 @@ export const projectCaseCopy: Record<Locale, Record<string, ProjectCaseCopy>> = 
       design: {
         paragraphs: ["The design process moved from rough sketches through to final functionality testing."],
         list: [
-          "Wireframing & UI: I created wireframes for mobile and desktop and designed a gentle visual identity in warm, natural tones that reflect care for pets.",
-          "Development & responsiveness: I coded the site with semantic HTML5 and modern CSS layouts (Flexbox/Grid).",
-          "Manual and cross-browser testing: before launch, I checked iOS and Android rendering, form functionality, responsive buttons, code validity, and loading speed with Chrome DevTools."
+          "I created low-fidelity wireframes for mobile and desktop and designed a gentle visual identity in warm, natural tones that reflect care for pets.",
+          "I coded the site with semantic HTML5 and modern CSS layouts (Flexbox/Grid), using modern AI tools (Cursor, GitHub Copilot).",
+          "Before launch, I checked rendering on iOS and Android devices, button responsiveness, code validity, and loading speed with Chrome DevTools."
         ]
       },
       reflection: {

@@ -80,6 +80,7 @@ type ProjectSectionConfig = {
   listHeading?: string;
   afterListHeading?: string;
   afterList?: string;
+  afterListItems?: string[];
   images?: {
     src: StaticImageData | string;
     alt: string;
@@ -365,6 +366,7 @@ function applyCaseCopy(config: ProjectConfig, copy: ProjectCaseCopy): ProjectCon
       list: copy.research.list ?? config.research.list,
       afterListHeading: copy.research.afterListHeading ?? config.research.afterListHeading,
       afterList: copy.research.afterList ?? config.research.afterList,
+      afterListItems: copy.research.afterListItems ?? config.research.afterListItems,
       images: withImageCopy(config.research.images, copy.research)
     },
     idea: {
@@ -425,6 +427,11 @@ function renderSectionContent(section: ProjectSectionConfig) {
         </p>
       ) : null}
       {section.afterList ? <p className="project-list-followup">{section.afterList}</p> : null}
+      {section.afterListItems ? (
+        <ul className="project-list">
+          {section.afterListItems.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      ) : null}
       {section.images
         ? (
             <div className="project-section-image-grid">

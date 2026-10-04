@@ -11,7 +11,9 @@ type ContactFormProps = {
   messageLabel: string;
   messagePlaceholder: string;
   submitLabel: string;
+  submittingMessage: string;
   statusMessage: string;
+  errorMessage: string;
 };
 
 export default function ContactForm({
@@ -23,23 +25,53 @@ export default function ContactForm({
   messageLabel,
   messagePlaceholder,
   submitLabel,
-  statusMessage
+  submittingMessage,
+  statusMessage,
+  errorMessage
 }: ContactFormProps) {
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const firstName = String(formData.get("firstName") ?? "").trim();
     const surname = String(formData.get("surname") ?? "").trim();
     const senderEmail = String(formData.get("email") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
     const fullName = `${firstName} ${surname}`.trim();
-    const subject = `${subjectPrefix}: ${fullName}`;
-    const body = `${nameLabel}: ${firstName}\n${surnameLabel}: ${surname}\n${emailLabel}: ${senderEmail}\n\n${messageLabel}\n${message}`;
+    formData.append("_subject", `${subjectPrefix}: ${fullName}`);
+    formData.append("_replyto", senderEmail);
 
-    setStatus(statusMessage);
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setIsSubmitting(true);
+    setStatus("");
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+      const result: unknown = await response.json();
+      const succeeded =
+        typeof result === "object" &&
+        result !== null &&
+        "success" in result &&
+        (result.success === true || result.success === "true");
+
+      if (!response.ok || !succeeded) {
+        throw new Error("FormSubmit rejected the submission.");
+      }
+
+      form.reset();
+      setStatus(statusMessage);
+    } catch (error) {
+      console.error("Contact form submission failed.", error);
+      setStatus(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,8 +94,8 @@ export default function ContactForm({
         <span>{messageLabel}</span>
         <textarea name="message" rows={6} maxLength={5000} placeholder={messagePlaceholder} required />
       </label>
-      <button type="submit" className="hero-cta">
-        {submitLabel}
+      <button type="submit" className="hero-cta" disabled={isSubmitting} aria-busy={isSubmitting}>
+        {isSubmitting ? submittingMessage : submitLabel}
       </button>
       <p className="contact-page-form-status" aria-live="polite">
         {status}

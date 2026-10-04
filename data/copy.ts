@@ -44,7 +44,9 @@ export const uiCopy: Record<
     contactFormMessageLabel: string;
     contactFormMessagePlaceholder: string;
     contactFormSubmit: string;
+    contactFormSubmitting: string;
     contactFormStatus: string;
+    contactFormError: string;
     contactEmailSubject: string;
     contactDetailsTitle: string;
     contactEmailLabel: string;
@@ -163,7 +165,9 @@ export const uiCopy: Record<
     contactFormMessageLabel: "Vaše představa:",
     contactFormMessagePlaceholder: "Popište svůj projekt, nápad nebo otázku…",
     contactFormSubmit: "Odeslat zprávu",
-    contactFormStatus: "Pokračujte odesláním připravené zprávy ve svém e-mailovém programu.",
+    contactFormSubmitting: "Odesílám…",
+    contactFormStatus: "Děkuji za zprávu. Brzy se vám ozvu.",
+    contactFormError: "Zprávu se nepodařilo odeslat. Zkuste to prosím znovu nebo mi napište e-mail.",
     contactEmailSubject: "Zpráva z webu",
     contactDetailsTitle: "KONTAKT",
     contactEmailLabel: "E-mail",
@@ -278,7 +282,9 @@ export const uiCopy: Record<
     contactFormMessageLabel: "Your idea:",
     contactFormMessagePlaceholder: "Describe your project, idea, or question…",
     contactFormSubmit: "Send message",
-    contactFormStatus: "Continue by sending the prepared message in your email app.",
+    contactFormSubmitting: "Sending…",
+    contactFormStatus: "Thank you for your message. I’ll get back to you soon.",
+    contactFormError: "Your message could not be sent. Please try again or email me directly.",
     contactEmailSubject: "Website contact message",
     contactDetailsTitle: "CONTACT",
     contactEmailLabel: "Email",
